@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0D0D2E"/>
+      <stop offset="100%" stop-color="#1A0A3E"/>
+    </linearGradient>
+    <linearGradient id="txt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="36" fill="url(#bg)"/>
+  <rect x="1" y="1" width="190" height="190" rx="35" fill="none" stroke="#4C1D95" stroke-width="1.5"/>
+  <text x="96" y="116" text-anchor="middle"
+    font-family="'Arial Black',Arial,sans-serif"
+    font-weight="900" font-size="88" fill="url(#txt)">AI</text>
+  <text x="96" y="148" text-anchor="middle"
+    font-family="Arial,sans-serif"
+    font-weight="700" font-size="22" letter-spacing="5" fill="#6D28D9">FEST</text>
+</svg>

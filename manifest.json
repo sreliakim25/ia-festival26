@@ -1,0 +1,48 @@
+{
+  "name": "AI Festival 2026 — Guia dos Palestrantes",
+  "short_name": "AI Festival",
+  "description": "Guia estratégico dos 20 palestrantes do AI Festival 2026. Bio, tópicos recentes e perguntas para o evento.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#07070F",
+  "theme_color": "#7C3AED",
+  "orientation": "portrait-primary",
+  "categories": ["education", "productivity"],
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "AI Festival 2026 — Lista de Palestrantes"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver Palestrantes",
+      "url": "/#palestrantes",
+      "description": "Acesse diretamente a lista de palestrantes"
+    },
+    {
+      "name": "Temas do Evento",
+      "url": "/#temas",
+      "description": "Explore os temas em destaque"
+    }
+  ]
+}

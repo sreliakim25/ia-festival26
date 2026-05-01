@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Festival 2026 — Guia Estratégico dos Palestrantes</title>
+  <meta name="description" content="Guia estratégico dos 20 palestrantes do AI Festival 2026. Bio, tópicos recentes e perguntas para o evento. StartSe, 13-14 mai, Pro Magno, SP." />
+  <meta name="theme-color" content="#7C3AED" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="/icons/icon-192.svg" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.svg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="AI Festival" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Festival 2026 — Guia dos Palestrantes" />
+  <meta property="og:description" content="Bio, tópicos e perguntas estratégicas dos 20 speakers. Anthropic, DeepMind, MIT, Amazon, Microsoft, iFood e mais." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/icons/icon-512.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #07070F;
+      --bg2: #0D0D1A;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.09);
+      --primary: #7C3AED;
+      --primary-light: #A78BFA;
+      --cyan: #06B6D4;
+      --green: #10B981;
+      --amber: #F59E0B;
+      --rose: #F43F5E;
+      --orange: #F97316;
+      --pink: #EC4899;
+      --violet: #8B5CF6;
+      --text: #F1F5F9;
+      --muted: #94A3B8;
+      --subtle: #475569;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 60px;
+      background: rgba(7,7,15,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-weight: 700; font-size: 1rem; letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--primary-light); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .875rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    @media(max-width:600px){ .nav-links { display: none; } }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 100px 24px 60px;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(124,58,237,0.4);
+      background: rgba(124,58,237,0.1);
+      color: var(--primary-light);
+      padding: 6px 16px; border-radius: 99px;
+      font-size: .8rem; font-weight: 600; letter-spacing: .5px;
+      margin-bottom: 24px;
+    }
+    .hero-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--primary-light); animation: pulse 1.6s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      font-weight: 800; letter-spacing: -2px; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    h1 span { background: linear-gradient(135deg, var(--primary-light), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { color: var(--muted); font-size: clamp(1rem, 2vw, 1.2rem); max-width: 600px; margin: 0 auto 40px; }
+    .hero-meta { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .meta-item { display: flex; flex-direction: column; align-items: center; }
+    .meta-value { font-size: 2rem; font-weight: 700; color: var(--text); }
+    .meta-label { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .btn-primary {
+      display: inline-block; padding: 14px 32px;
+      background: linear-gradient(135deg, var(--primary), #4F46E5);
+      color: #fff; border: none; border-radius: 99px;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 30px rgba(124,58,237,0.35);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(124,58,237,0.5); }
+
+    /* ── COUNTDOWN ── */
+    .countdown { display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
+    .countdown-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 16px 24px; min-width: 80px; text-align: center;
+    }
+    .countdown-num { font-size: 2rem; font-weight: 700; line-height: 1; }
+    .countdown-lbl { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* ── SECTION HEADER ── */
+    section { padding: 80px 24px; }
+    .section-label { color: var(--primary-light); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .section-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .section-sub { color: var(--muted); max-width: 560px; }
+    .section-header { margin-bottom: 48px; }
+
+    /* ── TEMAS ── */
+    #temas { background: var(--bg2); }
+    .temas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px; max-width: 1100px; margin: 0 auto;
+    }
+    .tema-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+      transition: border-color .2s, transform .2s;
+    }
+    .tema-card:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-3px); }
+    .tema-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .tema-name { font-weight: 700; font-size: .95rem; margin-bottom: 6px; }
+    .tema-desc { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── PALESTRANTES ── */
+    #palestrantes { max-width: 1200px; margin: 0 auto; }
+    .controls {
+      display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px;
+    }
+    .search-wrap { position: relative; }
+    .search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--subtle); }
+    #search {
+      width: 100%; padding: 12px 16px 12px 44px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 99px; color: var(--text); font-size: .95rem;
+      outline: none; transition: border-color .2s;
+    }
+    #search:focus { border-color: var(--primary); }
+    #search::placeholder { color: var(--subtle); }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 6px 16px; border-radius: 99px; font-size: .8rem; font-weight: 600;
+      cursor: pointer; border: 1px solid var(--border);
+      background: var(--card); color: var(--muted);
+      transition: all .2s;
+    }
+    .filter-btn.active, .filter-btn:hover { border-color: transparent; color: #fff; }
+    .filter-btn[data-cat="all"].active { background: var(--primary); }
+    .filter-btn[data-cat="bigtech"].active { background: var(--cyan); color: #000; }
+    .filter-btn[data-cat="academia"].active { background: var(--violet); }
+    .filter-btn[data-cat="startup"].active { background: var(--amber); color: #000; }
+    .filter-btn[data-cat="financas"].active { background: var(--green); color: #000; }
+    .filter-btn[data-cat="industria"].active { background: var(--rose); }
+    .filter-btn[data-cat="consultoria"].active { background: var(--orange); color: #000; }
+    .filter-btn[data-cat="midia"].active { background: var(--pink); }
+
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .speaker-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px;
+      cursor: pointer; transition: border-color .2s, transform .2s, box-shadow .2s;
+      display: flex; flex-direction: column; gap: 14px;
+      position: relative; overflow: hidden;
+    }
+    .speaker-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(124,58,237,0.06), transparent);
+      opacity: 0; transition: opacity .2s;
+    }
+    .speaker-card:hover { border-color: rgba(124,58,237,0.5); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(124,58,237,0.12); }
+    .speaker-card:hover::before { opacity: 1; }
+    .card-top { display: flex; align-items: center; gap: 14px; }
+    .avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem; flex-shrink: 0; color: #fff;
+      letter-spacing: -.5px;
+    }
+    .card-info { flex: 1; min-width: 0; }
+    .card-name { font-weight: 700; font-size: 1rem; line-height: 1.3; }
+    .card-role { color: var(--muted); font-size: .8rem; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-company { font-weight: 600; font-size: .8rem; color: var(--primary-light); }
+    .cat-badge {
+      display: inline-block; padding: 3px 10px; border-radius: 99px;
+      font-size: .7rem; font-weight: 700; letter-spacing: .3px;
+    }
+    .card-bio { font-size: .82rem; color: var(--muted); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag { padding: 3px 10px; background: rgba(255,255,255,0.07); border: 1px solid var(--border); border-radius: 99px; font-size: .7rem; color: var(--muted); }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; }
+    .view-btn { font-size: .78rem; color: var(--primary-light); font-weight: 600; display: flex; align-items: center; gap: 4px; }
+    .no-results { text-align: center; color: var(--muted); padding: 60px; font-size: 1.1rem; grid-column: 1/-1; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: #0F0F1E; border: 1px solid var(--border);
+      border-radius: 20px; width: 100%; max-width: 720px;
+      max-height: 90vh; overflow-y: auto;
+      transform: translateY(20px); transition: transform .25s;
+      scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-header {
+      position: sticky; top: 0; background: #0F0F1E;
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px;
+      z-index: 10;
+    }
+    .modal-avatar { width: 60px; height: 60px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; color: #fff; }
+    .modal-info { flex: 1; }
+    .modal-name { font-size: 1.3rem; font-weight: 800; letter-spacing: -.5px; }
+    .modal-role { color: var(--muted); font-size: .875rem; margin-top: 2px; }
+    .modal-company { font-weight: 700; font-size: .875rem; margin-top: 3px; }
+    .modal-close {
+      width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border);
+      background: transparent; color: var(--muted); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+      transition: all .2s; flex-shrink: 0;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.08); color: var(--text); }
+    .modal-body { padding: 0 24px 24px; }
+    .modal-tags { display: flex; gap: 6px; flex-wrap: wrap; padding: 16px 24px; border-bottom: 1px solid var(--border); }
+
+    /* accordion */
+    .accordion { margin-top: 4px; }
+    .acc-item { border-bottom: 1px solid var(--border); }
+    .acc-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0; background: none; border: none; color: var(--text);
+      font-size: .95rem; font-weight: 700; cursor: pointer; gap: 12px;
+    }
+    .acc-trigger:hover { color: var(--primary-light); }
+    .acc-icon { transition: transform .25s; color: var(--muted); }
+    .acc-item.open .acc-icon { transform: rotate(180deg); }
+    .acc-content { display: none; padding-bottom: 20px; }
+    .acc-item.open .acc-content { display: block; }
+    .acc-content p, .acc-content li { font-size: .875rem; color: var(--muted); line-height: 1.7; }
+    .acc-content ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .acc-content ul li::before { content: '→'; color: var(--primary-light); margin-right: 8px; font-size: .8rem; }
+
+    /* questions */
+    .question-list { display: flex; flex-direction: column; gap: 12px; }
+    .question-item {
+      background: rgba(124,58,237,0.06); border: 1px solid rgba(124,58,237,0.2);
+      border-radius: var(--radius-sm); padding: 14px 16px;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .q-num { color: var(--primary-light); font-weight: 800; font-size: .8rem; flex-shrink: 0; margin-top: 2px; }
+    .q-text { font-size: .82rem; color: var(--text); line-height: 1.6; flex: 1; }
+    .q-copy {
+      flex-shrink: 0; padding: 4px 10px; border-radius: 99px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--muted); font-size: .7rem; cursor: pointer; transition: all .2s;
+    }
+    .q-copy:hover { border-color: var(--primary); color: var(--primary-light); }
+    .q-copy.copied { border-color: var(--green); color: var(--green); }
+
+    /* ── SOBRE ── */
+    #sobre { background: var(--bg2); }
+    .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto; }
+    @media(max-width:640px){ .sobre-grid { grid-template-columns: 1fr; } }
+    .sobre-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+    .sobre-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .sobre-card p { color: var(--muted); font-size: .875rem; line-height: 1.7; }
+    .stat-row { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-n { font-size: 2rem; font-weight: 800; }
+    .stat-l { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 24px; text-align: center; color: var(--subtle); font-size: .8rem;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 6px;
+    }
+    .hamburger span {
+      display: block; height: 2px; background: var(--muted); border-radius: 2px;
+      transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media(max-width:600px){ .hamburger { display: flex; } }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 60px 0 0 0; z-index: 99;
+      background: rgba(7,7,15,0.97); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+      opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    @media(max-width:600px){ .mobile-menu { display: flex; } }
+    .mobile-menu a {
+      color: var(--text); text-decoration: none; font-size: 1.5rem; font-weight: 700;
+      letter-spacing: -0.5px; transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--primary-light); }
+
+    /* ── MOBILE IMPROVEMENTS ── */
+    * { -webkit-tap-highlight-color: transparent; }
+    @media(max-width:640px) {
+      .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
+      .filters::-webkit-scrollbar { display: none; }
+      .filter-btn { flex-shrink: 0; }
+      .countdown { gap: 10px; }
+      .countdown-item { padding: 12px 14px; min-width: 64px; }
+      .countdown-num { font-size: 1.5rem; }
+      .hero-meta { gap: 20px; }
+      .meta-value { font-size: 1.5rem; }
+      section { padding: 60px 16px; }
+      .modal-header { padding: 16px; }
+      .modal-body { padding: 0 16px 20px; }
+      .modal-tags { padding: 12px 16px; }
+    }
+    /* iOS safe area */
+    nav { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+    @supports(padding: max(0px)) {
+      #hero { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+    }
+
+    /* ── INSTALL BANNER ── */
+    .install-banner {
+      display: none; position: fixed; bottom: 16px; left: 16px; right: 16px; z-index: 150;
+      background: #1A0A3E; border: 1px solid rgba(124,58,237,0.5);
+      border-radius: 16px; padding: 14px 18px;
+      align-items: center; gap: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      animation: slideUp .3s ease;
+    }
+    .install-banner.show { display: flex; }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .install-banner p { flex: 1; font-size: .85rem; color: var(--text); }
+    .install-banner p strong { color: var(--primary-light); }
+    .install-btn {
+      padding: 8px 18px; background: var(--primary); color: #fff; border: none;
+      border-radius: 99px; font-size: .8rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+    }
+    .install-dismiss { background: none; border: none; color: var(--subtle); cursor: pointer; font-size: 1.1rem; padding: 4px; }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+    /* cat colors util */
+    .bg-bigtech { background: linear-gradient(135deg, #0891B2, #06B6D4); }
+    .bg-academia { background: linear-gradient(135deg, #6D28D9, #8B5CF6); }
+    .bg-startup  { background: linear-gradient(135deg, #D97706, #F59E0B); }
+    .bg-financas { background: linear-gradient(135deg, #065F46, #10B981); }
+    .bg-industria{ background: linear-gradient(135deg, #BE123C, #F43F5E); }
+    .bg-consultoria{ background: linear-gradient(135deg, #C2410C, #F97316); }
+    .bg-midia    { background: linear-gradient(135deg, #9D174D, #EC4899); }
+
+    .col-bigtech  { color: var(--cyan); }
+    .col-academia { color: var(--violet); }
+    .col-startup  { color: var(--amber); }
+    .col-financas { color: var(--green); }
+    .col-industria{ color: var(--rose); }
+    .col-consultoria{ color: var(--orange); }
+    .col-midia    { color: var(--pink); }
+
+    .badge-bigtech  { background: rgba(6,182,212,0.15); color: var(--cyan); }
+    .badge-academia { background: rgba(139,92,246,0.15); color: var(--violet); }
+    .badge-startup  { background: rgba(245,158,11,0.15); color: var(--amber); }
+    .badge-financas { background: rgba(16,185,129,0.15); color: var(--green); }
+    .badge-industria{ background: rgba(244,63,94,0.15); color: var(--rose); }
+    .badge-consultoria{ background: rgba(249,115,22,0.15); color: var(--orange); }
+    .badge-midia    { background: rgba(236,72,153,0.15); color: var(--pink); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">AI <span>Festival</span> 2026</div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#temas">Temas</a></li>
+    <li><a href="#palestrantes">Palestrantes</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Menu mobile">
+  <a href="#sobre" class="mobile-link">Sobre</a>
+  <a href="#temas" class="mobile-link">Temas</a>
+  <a href="#palestrantes" class="mobile-link">Palestrantes</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge">StartSe · 13 e 14 de Maio · São Paulo</div>
+  <h1>AI Festival <span>2026</span></h1>
+  <p class="hero-sub">Guia estratégico dos 20 palestrantes confirmados — Bio, tópicos recentes e perguntas para aprofundar seu aprendizado.</p>
+
+  <div class="countdown" id="countdown">
+    <div class="countdown-item"><div class="countdown-num" id="cd-d">--</div><div class="countdown-lbl">Dias</div></div>
+    <div class="countdown-item"><div class="countdown-num" id="cd-h">--</div><div class="countdown-lbl">Horas</div></div>
+    <div class="countdown-item"><div class="countdown-num" id="cd-m">--</div><div class="countdown-lbl">Min</div></div>
+    <div class="countdown-item"><div class="countdown-num" id="cd-s">--</div><div class="countdown-lbl">Seg</div></div>
+  </div>
+
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-value">20</span><span class="meta-label">Palestrantes</span></div>
+    <div class="meta-item"><span class="meta-value">2</span><span class="meta-label">Dias</span></div>
+    <div class="meta-item"><span class="meta-value">7</span><span class="meta-label">Empresas Big Tech</span></div>
+    <div class="meta-item"><span class="meta-value">Pro Magno</span><span class="meta-label">Local · SP</span></div>
+  </div>
+
+  <a href="#palestrantes" class="btn-primary">Explorar Palestrantes</a>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-header" style="text-align:center;max-width:700px;margin:0 auto 48px">
+    <div class="section-label">Sobre o Evento</div>
+    <h2 class="section-title">O maior encontro de IA do Brasil em 2026</h2>
+    <p class="section-sub" style="margin:0 auto">Organizado pela StartSe, o AI Festival reúne líderes de Anthropic, Google DeepMind, MIT, Amazon, Microsoft, iFood, Bradesco e muito mais em dois dias intensos no Pro Magno, São Paulo.</p>
+  </div>
+  <div class="sobre-grid">
+    <div class="sobre-card">
+      <h3>📅 Data e Local</h3>
+      <p>13 e 14 de maio de 2026<br>Pro Magno · São Paulo, SP</p>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-n" style="color:var(--primary-light)">2</div><div class="stat-l">Dias</div></div>
+        <div class="stat"><div class="stat-n" style="color:var(--cyan)">20</div><div class="stat-l">Speakers</div></div>
+        <div class="stat"><div class="stat-n" style="color:var(--green)">7</div><div class="stat-l">Países</div></div>
+      </div>
+    </div>
+    <div class="sobre-card">
+      <h3>🎯 Como usar este guia</h3>
+      <p>Para cada palestrante você encontra <strong>biografia resumida</strong>, os <strong>tópicos que eles estão abordando em 2025-2026</strong> e <strong>perguntas estratégicas calibradas</strong> para engenheiros e empreendedores de IA. Use o botão de copiar para levar as perguntas ao evento.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEMAS -->
+<section id="temas">
+  <div class="section-header" style="max-width:1100px;margin:0 auto 48px">
+    <div class="section-label">Temas em Destaque</div>
+    <h2 class="section-title">O que vai estar em pauta</h2>
+  </div>
+  <div class="temas-grid" style="max-width:1100px;margin:0 auto">
+    <div class="tema-card"><div class="tema-icon">🤖</div><div class="tema-name">Agentes de IA</div><div class="tema-desc">Arquiteturas agênticas, multi-agente, orquestração e execução autônoma de tarefas.</div></div>
+    <div class="tema-card"><div class="tema-icon">🔌</div><div class="tema-name">MCP</div><div class="tema-desc">Model Context Protocol como padrão emergente para integração de agentes com sistemas corporativos.</div></div>
+    <div class="tema-card"><div class="tema-icon">🏛️</div><div class="tema-name">IA Soberana</div><div class="tema-desc">Independência tecnológica, modelos em português, datacenters brasileiros e LGPD.</div></div>
+    <div class="tema-card"><div class="tema-icon">🛒</div><div class="tema-name">Agentic Commerce</div><div class="tema-desc">Agentes como compradores autônomos: Agent Intent Optimisation e o fim do SEO tradicional.</div></div>
+    <div class="tema-card"><div class="tema-icon">🏗️</div><div class="tema-name">Enterprise AI</div><div class="tema-desc">Plataformas como watsonx, Azure AI, Bedrock e Glean transformando operações corporativas.</div></div>
+    <div class="tema-card"><div class="tema-icon">📊</div><div class="tema-name">Open-weight Models</div><div class="tema-desc">Llama, Gemma, Qwen e Gaia dominam em ciência. Vantagens, riscos e estratégias de adoção.</div></div>
+    <div class="tema-card"><div class="tema-icon">⚖️</div><div class="tema-name">Governança de IA</div><div class="tema-desc">Explicabilidade, segurança, compliance regulatório e frameworks de risk-gating.</div></div>
+    <div class="tema-card"><div class="tema-icon">🎓</div><div class="tema-name">Letramento em IA</div><div class="tema-desc">Formação de líderes, cultura AI-first e transição de carreira para profissionais de domínio.</div></div>
+  </div>
+</section>
+
+<!-- PALESTRANTES -->
+<section id="palestrantes" style="padding: 80px 24px;">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-header">
+      <div class="section-label">Palestrantes Confirmados</div>
+      <h2 class="section-title">20 líderes de IA</h2>
+      <p class="section-sub">Clique em qualquer card para ver bio completa, tópicos e perguntas estratégicas.</p>
+    </div>
+
+    <div class="controls">
+      <div class="search-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="search" placeholder="Buscar palestrante, empresa, tema..." autocomplete="off" />
+      </div>
+      <div class="filters">
+        <button class="filter-btn active" data-cat="all">Todos (20)</button>
+        <button class="filter-btn" data-cat="bigtech">Big Tech</button>
+        <button class="filter-btn" data-cat="startup">Startups</button>
+        <button class="filter-btn" data-cat="financas">Finanças</button>
+        <button class="filter-btn" data-cat="industria">Indústria</button>
+        <button class="filter-btn" data-cat="consultoria">Consultoria</button>
+        <button class="filter-btn" data-cat="academia">Academia</button>
+        <button class="filter-btn" data-cat="midia">Mídia</button>
+      </div>
+    </div>
+
+    <div class="speakers-grid" id="speakers-grid"></div>
+  </div>
+</section>
+
+<!-- INSTALL BANNER (PWA) -->
+<div class="install-banner" id="install-banner">
+  <p><strong>Instalar app</strong> — Acesse offline no celular</p>
+  <button class="install-btn" id="install-btn">Instalar</button>
+  <button class="install-dismiss" id="install-dismiss" aria-label="Fechar">✕</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>AI Festival 2026 · StartSe · Pro Magno, São Paulo · 13 e 14 de Maio</p>
+  <p style="margin-top:8px">Guia estratégico baseado em pesquisa pública dos palestrantes confirmados.</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-avatar" id="m-avatar"></div>
+      <div class="modal-info">
+        <div class="modal-name" id="m-name"></div>
+        <div class="modal-role" id="m-role"></div>
+        <div class="modal-company" id="m-company"></div>
+      </div>
+      <button class="modal-close" id="modal-close" aria-label="Fechar">✕</button>
+    </div>
+    <div class="modal-tags" id="m-tags"></div>
+    <div class="modal-body">
+      <div class="accordion" id="m-accordion"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SPEAKERS = [
+  {
+    id: 1,
+    name: "Henrique Savelli",
+    role: "Arquiteto de IA",
+    company: "Anthropic",
+    category: "bigtech",
+    initials: "HS",
+    tags: ["Claude API", "MCP", "Agentes IA", "AWS Bedrock"],
+    bio: "Brasileiro, engenheiro de computação. ~8 anos no Google como Solutions Engineering Manager (AdMob, Firebase) com gestão de 300+ parceiros no Brasil. Hoje é Arquiteto de IA na Anthropic — primeira aparição presencial da empresa em evento brasileiro.",
+    topics: [
+      "74 lançamentos da Anthropic em 52 dias úteis (fev–mar/2026): Claude Opus 4.6/4.7, Sonnet 4.6 com 1M tokens em beta",
+      "Claude Code com modo agentic e Agent Teams para desenvolvimento assistido por IA",
+      "Claude Cowork — agente de desktop integrado a GSuite, Slack, Figma e arquivos locais via MCP",
+      "MCP (Model Context Protocol) como padrão de integração de agentes com sistemas externos",
+      "Acordo de US$ 100 bi com AWS, US$ 200 mi com Snowflake e investimento Google de até US$ 40 bi"
+    ],
+    questions: [
+      "Para uma startup brasileira construindo agentes verticalizados para construção civil e saneamento, qual o caminho mais barato e rápido dentro do ecossistema Claude — Claude API direta, Claude Code, Bedrock ou Vertex — considerando volume baixo, requisitos de privacidade e orquestração com sistemas legados?",
+      "Como você enxerga o MCP evoluindo para padronizar a integração de agentes com sistemas técnicos de engenharia (BIM, GIS, SCADA, sensores IoT em ETAs/ETEs)? Quando faz sentido um pequeno player escrever conectores MCP próprios versus aguardar conectores oficiais?",
+      "Para casos de uso onde precisão regulatória é crítica (NBR, ABNT, Resolução ANA, NR-18 em obras), como você compara Claude com extended thinking + tool use versus arquiteturas RAG tradicionais — e que padrão de arquitetura você recomendaria para 2026?",
+      "Você fez a transição de engenheiro de plataforma para arquiteto de IA dentro de Big Techs. Que skills foram realmente decisivas nessa virada para um engenheiro civil migrando para IA aplicada?"
+    ]
+  },
+  {
+    id: 2,
+    name: "Paul F. Accornero",
+    role: "Architect of Agentic Commerce",
+    company: "Harvard / The AI Praxis",
+    category: "consultoria",
+    initials: "PA",
+    tags: ["Agentic Commerce", "AIO", "B2B", "Harvard"],
+    bio: "Italiano baseado em Treviso. Harvard Business School GMP23, PhD candidate (Queensland), Fellow FCIM e FCMI. Group C-Suite Executive na De'Longhi Group (€3,5 bi P&L em 120+ mercados), Guest Lecturer em Harvard e Founder da The AI Praxis™. Top 3-4% de autores do SSRN com 22+ papers em seis meses.",
+    topics: [
+      "Primeiro pesquisador a definir 'Agentic Commerce' como disciplina — paper na California Management Review (Berkeley, fev/2026)",
+      "The Shopper Schism®: separação entre o shopper (algoritmo) e o consumer (humano)",
+      "Agent Intent Optimisation (AIO®) como substituto do SEO em mercados dominados por agentes",
+      "Caso Amazon retirando catálogo do Google Shopping por 31 dias (jul/2025) como marco do Agentic Commerce",
+      "Livro 'The Algorithmic Shopper' (St. Martin's Press/Macmillan) com publicação prevista Q4 2026 / Q1 2027"
+    ],
+    questions: [
+      "Sua tese central é que o shopper (algoritmo) está se separando do consumer (humano). Como esse Schism se manifesta em B2B regulado — agentes cotando materiais de construção, orçando projetos de saneamento ou licitações públicas?",
+      "Você fala de Agent Intent Optimisation (AIO) substituindo SEO. Para um construtor de soluções B2B no Brasil, qual a primeira camada de AIO a implementar — schemas estruturados, APIs legíveis a agentes ou algo mais profundo?",
+      "O Trust Paradox aparece forte em construção: ninguém aceita agente autônomo decidindo cálculo estrutural. Onde está a fronteira viável de delegação que você tem visto funcionar em indústrias igualmente reguladas?",
+      "Você é 'pracademic' — executivo C-suite que também publica academicamente. Que conselho você dá para um empreendedor solo brasileiro construindo IP intelectual ao mesmo tempo em que entrega projetos pagos?"
+    ]
+  },
+  {
+    id: 3,
+    name: "Peter Danenberg",
+    role: "Senior Software Engineer",
+    company: "Google DeepMind",
+    category: "bigtech",
+    initials: "PD",
+    tags: ["Gemini", "Computer Use", "Modelos Pequenos", "MIT"],
+    bio: "Baseado em Palo Alto. Formação no MIT (tripla graduação) e University of Freiburg. Lidera rapid prototyping da plataforma Gemini AI no Google DeepMind, afiliado ao HAI Lab da Oxford. Autodenominado 'Father of Gemini'. Construiu o intent-generator em C++ que processa ~28 milhões de queries/dia no Google Assistant.",
+    topics: [
+      "Code Canvas (Gemini Canvas) e Computer Use (Gemini 2.5 Computer Use Model, out/2025 via API)",
+      "Três tendências: ambient LLMs (companheiros persistentes), constelações de modelos pequenos especializados e renascimento da ML clássica",
+      "LLMs como interface universal sobre raciocínio simbólico e ontologias — não para substituir, mas orquestrar",
+      "Seminário 'Thinking in the Age of AI' em Oxford (Jesus College, nov/2025)",
+      "Discussão em Davos/WEF (jan/2026) sobre se o avanço dos modelos é linear ou step-function"
+    ],
+    questions: [
+      "Sua tese é que LLMs estão virando interface sobre ML clássica e raciocínio simbólico. Em engenharia civil, temos décadas de heurísticas codificadas (Eurocode, ABNT, EPANET, SWMM). Como você arquitetaria um agente Gemini que orquestra esses solvers determinísticos em vez de substituí-los?",
+      "Para Gemini Computer Use rodando em ambientes corporativos com softwares antigos típicos do canteiro de obras (AutoCAD, Revit, ERPs Sienge/UAU, planilhas Excel pesadas), o que ainda quebra na prática e qual é o gargalo arquitetural prioritário?",
+      "Você comenta que 'constelações de modelos pequenos' superarão o monolito gigante para muitos casos. Para uma startup brasileira pequena, qual o ponto mínimo de massa onde vale fine-tunar Gemma 3 para vocabulário técnico de saneamento e construção?",
+      "Para um engenheiro civil aprendendo Gemini API e construindo agentes, qual seria sua rota de estudo de 90 dias — repositórios, papers, padrões de design (ReAct, plan-and-execute) — para dominar o estado da arte agêntico em 2026?"
+    ]
+  },
+  {
+    id: 4,
+    name: "Ana Trišović",
+    role: "Research Scientist",
+    company: "MIT CSAIL / FutureTech Lab",
+    category: "academia",
+    initials: "AT",
+    tags: ["Foundation Models", "Open-weight", "Science AI", "MIT"],
+    bio: "Sérvia, doutorada em Ciência da Computação Aplicada por Cambridge em parceria com o CERN (2018). Research Scientist no MIT FutureTech Lab (CSAIL), com afiliação ao MIT Sloan e IQSS de Harvard. 42.910 citações no Google Scholar. Descobriu o MIT OpenCourseWare em 2012 como estudante na Sérvia — história narrada pelo MIT News.",
+    topics: [
+      "Paper 'The Rapid Growth of AI Foundation Model Usage in Science' (arXiv:2511.21739): modelos open-weight dominam, vision models lideram",
+      "'On the Origin of Algorithmic Progress in AI': ganho de eficiência algorítmica de 22.000× em FLOPs entre 2012–2023",
+      "FutureTech AI in Science Database — análise em larga escala da adoção de FMs em ciência",
+      "Mapeamento do impacto de foundation models nos UN SDGs (IEEE eScience 2025)",
+      "Riscos de des-democratização: 'The Shrinking Lifespan of LLMs in Science' e lock-in de modelos"
+    ],
+    questions: [
+      "Seu paper mostra que ganhos algorítmicos podem superar os de hardware. Para o Brasil, com pouco GPU e muitos problemas regulatórios em saneamento e construção, qual a estratégia de pesquisa aplicada mais promissora — destilação, compressão, síntese de dados sintéticos, modelos de baixa cardinalidade?",
+      "Modelos open-weight dominam em ciência. Que riscos práticos de lock-in e shrinking lifespan você tem visto, e como uma operação de IA pequena planeja ciclos de troca de modelo sem refazer todo o stack?",
+      "O FutureTech AI in Science Database mapeia adoção de FMs em pesquisa. Existe frente análoga para engenharia civil/sanitária aplicada — ou seria oportunidade para alguém criar?",
+      "Sua trajetória começou com MIT OpenCourseWare. Que conselho você daria a um empreendedor brasileiro montando um programa de treinamento em IA para engenheiros não-tech, considerando o que funcionou na sua formação autodidata?"
+    ]
+  },
+  {
+    id: 5,
+    name: "Justin Liu",
+    role: "Cofounder & Chief Architect",
+    company: "Genspark",
+    category: "startup",
+    initials: "JL",
+    tags: ["Mixture-of-Agents", "Super Agent", "Agentic Workspace", "Unicórnio"],
+    bio: "Veteran technologist com carreira em Google, Facebook e Baidu. Cofundador da Genspark (MainFunc Inc., Palo Alto/Singapura/Japão). A empresa virou unicórnio em nov/2025 com Series B de US$ 275 mi, valuation de US$ 1,25 bi. ARR saltou de US$ 10 mi em 9 dias para US$ 50 mi em 5 meses. 20+ milhões de usuários.",
+    topics: [
+      "Pivô de search para agentes gerais: Genspark Super Agent (Mixture-of-Agents, 9 LLMs e 80+ ferramentas)",
+      "Tese central: entregar o deliverable completo (deck, planilha, site) em vez de apenas a resposta",
+      "'Call for Me' — agente que faz ligações telefônicas reais via OpenAI Realtime API",
+      "Genspark Teams e Enterprise Edition (SOC2); Genspark superou Manus e OpenAI em 3 níveis do benchmark GAIA",
+      "Parceria estratégica com AWS Bedrock + Anthropic (anunciada 13/nov/2025)"
+    ],
+    questions: [
+      "A Genspark passou de search para AI Workspace gerando entregáveis prontos. Para um setor com entregáveis muito específicos (memorial descritivo, planilha SINAPI, cronograma físico-financeiro), qual seria sua abordagem de produto para criar uma versão vertical do Super Agent?",
+      "Sua arquitetura Mixture-of-Agents roteia entre 9 LLMs. Para uma startup pequena no Brasil, faz sentido replicar essa abordagem ou começamos por um single-model agent bem orquestrado? Qual a métrica que dispara a evolução?",
+      "O recurso 'Call for Me' executa no mundo real. No Brasil, isso aproxima você de protocolar pedidos em órgãos, monitorar editais, agendar visitas técnicas. Qual o risco operacional crítico ao deixar IA executar ações reais em fluxos B2G?",
+      "Como você avalia a competitividade real da pesquisa chinesa em IA em 2026, e que tecnologias (DeepSeek, Qwen, Manus, Kimi) você efetivamente consideraria embarcar em produto vendido no Brasil?"
+    ]
+  },
+  {
+    id: 6,
+    name: "Leonardo Zappa",
+    role: "Go to Market LatAm",
+    company: "Glean",
+    category: "startup",
+    initials: "LZ",
+    tags: ["Work AI", "Enterprise Search", "RAG", "Agentes Corporativos"],
+    bio: "Lidera a entrada e expansão da Glean na América Latina (Brasil e México prioritariamente). A Glean é plataforma de Work AI / Enterprise Search + Agents fundada em 2019 por Arvind Jain (ex-Google), avaliada em US$ 7,2 bi (Series F jun/2025). US$ 200 mi de ARR, 100+ conectores SaaS.",
+    topics: [
+      "Glean Assistant com geração de slides, voice real-time, agent sandboxes, MCP Apps (Gamma, Hex, Box, Asana)",
+      "Enterprise Graph + Personal Knowledge Graph para contexto organizacional profundo",
+      "Waldo — modelo agêntico baseado em Nemotron 3 Nano (abr/2026)",
+      "Posicionamento como 'context layer' agnóstica de modelo, concorrendo com Microsoft 365 Copilot e Salesforce Agentforce",
+      "Cases: Reddit, Samsung, Intuit, Intercom, Zoom. Listas Forbes AI 50, Bloomberg AI Startups 2026"
+    ],
+    questions: [
+      "Glean se posiciona como camada agnóstica sobre 100+ SaaS. Em construtoras médias brasileiras (Sienge/UAU + Office 365 + Drive caótico + AutoCAD/Revit em rede local), quais conectores e fluxos vocês já tropicalizaram?",
+      "A Glean fala muito de Personal + Enterprise Knowledge Graph. Em obras civis, conhecimento crítico fica espalhado (e-mail do mestre, foto no WhatsApp, ofício em PDF). Vocês têm caminho para ingerir esses canais 'informais'?",
+      "Qual o patamar mínimo de funcionários em que Glean começa a fazer sentido economicamente? Qual o TCO comparado a uma stack DIY com Vertex AI Search ou Azure AI Search + indexer próprio?",
+      "Que diferencial técnico vocês conseguem sustentar quando a Microsoft já está embutida em 100% do M365 do cliente?"
+    ]
+  },
+  {
+    id: 7,
+    name: "Felipe Blanes",
+    role: "Sr. Technical Program Manager",
+    company: "Amazon AGI Labs",
+    category: "bigtech",
+    initials: "FB",
+    tags: ["Amazon Nova", "Nova Act", "Browser Use", "Bedrock"],
+    bio: "Brasileiro de São Paulo, engenheiro de Controle e Automação pelo Insper. Passou pela GM em sistemas de controle ferroviário, depois migrou para a Amazon no time que trouxe a Alexa para o Brasil. Hoje é Sr. TPM no Amazon AGI Labs (Cambridge, MA), lab criado em dez/2024 focado em 'long-term research bets' e agentes de IA.",
+    topics: [
+      "Amazon Nova — família multimodal de foundation models disponível no Bedrock",
+      "Amazon Nova Act — browser-use agent para automação de UI (janelas, formulários, navegação web)",
+      "Jurado do Amazon Nova AI Hackathon (US$ 40k em prêmios + US$ 55k em AWS credits)",
+      "Amazon AGI Labs passou a reportar a Peter DeSantis (SVP AWS) após reorganização em fev/2026",
+      "Tese pública: Amazon AGI Labs como provedora B2B de fronteira em automação corporativa"
+    ],
+    questions: [
+      "Nova Act está focado em browser-use. Para construção civil: protocolar documentos em prefeituras, monitorar diários oficiais de licitações, tirar guias da Receita. Qual a maturidade real do Nova Act para sites brasileiros legados (gov.br, prefeituras com SSO frágil, captchas)?",
+      "Saindo de GM (controle/automação) para Amazon AGI, sua transição se parece com a minha (engenheiro civil → empreendedor de IA). Que três coisas você priorizou nos primeiros 12 meses fora do mundo industrial?",
+      "Como TPM Sênior, você convive com o trade-off velocidade vs. governança em um lab de fronteira. Para um time pequeno externo construindo agentes para clientes regulados, qual frame de risk-gating você empresta da Amazon?",
+      "Para compliance LGPD + residência de dados em São Paulo, qual a recomendação prática em volume baixo: Nova vs. Claude no Bedrock vs. Titan vs. multi-modelo?"
+    ]
+  },
+  {
+    id: 8,
+    name: "Jose Caodaglio",
+    role: "Founder / CEO & CTO",
+    company: "ColmeIA",
+    category: "startup",
+    initials: "JC",
+    tags: ["Polímata", "Agentes Arquetípicos", "BYOC", "Low-code"],
+    bio: "Carreira corporativa em Oracle e SAP, saiu em 2016 para fundar a ColmeIA — plataforma de IA conversacional/automação omnichannel. Investida pela Crescera Capital (R$ 43 mi, valuation de ~R$ 440-500 mi). Processa 10+ milhões de sessões/dia. Clientes: Banco Mercantil (R$ 1 bi em vendas via WhatsApp), V.tal, Rodobens.",
+    topics: [
+      "Polímata (jul/2025): framework no-code/low-code para criar agentes de IA multi-LLM — primeira versão em horas, não meses",
+      "Conceito de agentes 'arquetípicos' de 5ª geração: hunter, sábio, instituidor — compostos como Lego",
+      "BYOC (Bring Your Own Cloud): clientes mantêm dados na própria nuvem como diferencial de governança",
+      "Triplicou receita, dobrou equipe em 2025 e projeta dobrar novamente em 2026",
+      "CRM próprio e ferramenta de marketing de performance (Meta/Google) lançados em 2024-2025"
+    ],
+    questions: [
+      "Sua ideia de agentes arquetípicos componíveis (hunter, sábio, instituidor) faz sentido para construção, onde processos têm papéis bem definidos (engenheiro residente, mestre, fiscal, comprador). Quais arquétipos ainda faltam ser nomeados na prática do mercado?",
+      "O Polímata low-code democratiza a criação. Para uma microempresa de saneamento que tem analista comercial mas não tem dev, qual a fronteira realista entre o que dá para entregar 100% no Polímata e o que ainda exige código custom?",
+      "A tese de BYOC é elegante mas operacionalmente complexa. Qual é o piso de receita abaixo do qual BYOC vira inviável para o cliente, e como vocês precificam isso?",
+      "Você passou Oracle → SAP → empreendedor solo aos 45 com ColmeIA. Para alguém ~30 anos saindo de engenharia civil para IA, qual o erro mais caro que você cometeu nos primeiros 3 anos?"
+    ]
+  },
+  {
+    id: 9,
+    name: "Rafael Siqueira",
+    role: "Tech Partner / Build by McKinsey LATAM",
+    company: "McKinsey & Company",
+    category: "consultoria",
+    initials: "RS",
+    tags: ["Agentic AI", "Brazil Stack", "Pix", "Runtime Agents"],
+    bio: "Engenheiro Mecatrônico e de Robótica pela USP. Co-fundador e CTO do Apontador (listado entre as 250 melhores empresas globais em 2010). Hoje é Partner e líder de Build by McKinsey na América Latina — unidade de software engineers, architects e product owners que entrega tecnologia.",
+    topics: [
+      "Distinção entre Assistants (camada de relacionamento) e Agents de runtime (camada de execução) como ponto de virada",
+      "Brazil Stack Report (Valor Capital + McKinsey): Pix (158 mi de brasileiros, 77 bi de transações), Open Finance, Gov.br e Drex",
+      "Tese: 'a próxima onda da IA não será definida por quem responde melhor; será por quem consegue agir melhor'",
+      "95% dos pilotos morrem por falta de alinhamento estratégico — não por problemas técnicos",
+      "OpenClaw levado ao mundo real corporativo em bancos e varejistas"
+    ],
+    questions: [
+      "Sua diferença entre Assistant (relação) e Agent de runtime (execução) é poderosa. No setor de construção, agentes de runtime esbarram em ERP fechado e processos manuais. Qual o MVP de Agent de runtime que você implantaria primeiro em uma construtora de médio porte?",
+      "Você combina trajetória empreendedora (Apontador) + consultoria. Para um engenheiro virando empreendedor de IA, vale tempo em consultoria estratégica ou é melhor mergulhar direto em produto? Qual o trade-off real?",
+      "O Brazil Stack (Pix + Open Finance + Gov.br + Drex) é uma stack pública incomparável. Como agente de IA pode explorar isso para construção e saneamento? Qual o caso de uso de US$ 1 mi mais óbvio que ainda não foi feito?",
+      "Você diz que 95% dos pilotos morrem por falta de alinhamento estratégico. Qual o playbook de governança mínimo que um cliente de R$ 100 mi de receita precisa ter antes de começar piloto?"
+    ]
+  },
+  {
+    id: 10,
+    name: "Rafael Cavalcanti",
+    role: "Data, Analytics & AI Director (CDAO)",
+    company: "Bradesco",
+    category: "financas",
+    initials: "RC",
+    tags: ["Bridge Platform", "Multi-agente", "Azure AI", "Tokens/dia"],
+    bio: "Diretor de Inteligência de Dados, Analytics, IA e CRM do Bradesco. Engenheiro com passagem executiva pela Wharton (UPenn). Carreira em risco de crédito, econometria e ciência de dados. Palestrante em Febraban Tech, FICO World, IT Inside Innovation Forum.",
+    topics: [
+      "Plataforma Bridge (Bradesco Generative Data Intelligence): IA multi-agente, tecnologia-agnóstica, co-desenvolvida com Microsoft/Avanade sobre Azure OpenAI in Foundry",
+      "BIA cliente: 87% de resolutividade, 25 milhões de interações; BIA Corporate: 80% de resolutividade",
+      "2 bilhões de tokens de inferência/dia e 2 milhões de requests/dia",
+      "Redução superior a 30% em custos de tecnologia; lançamento de produtos até 10× mais rápido",
+      "Estratégia 2026: de 'AI-First' para 'AI-Powered' — orquestração de agentes integrados ao core com governança avançada"
+    ],
+    questions: [
+      "A Bridge é multi-agente, tecnologia-agnóstica, com 2 bi de tokens/dia. Que arquitetura concreta vocês usaram para roteamento de modelos (Sonnet × GPT-4o × Llama interno) e como esse roteamento minimiza custo sem comprometer qualidade?",
+      "O BIA Corporate atinge 80% de resolutividade interna. Em construtoras (clientes do Bradesco), qual o caso de uso B2B de IA que vocês mais têm visto dar dinheiro de verdade em 2025-2026?",
+      "A passagem de AI-First para AI-Powered sugere mudança de paradigma. Em uma operação muito menor, o que esse termo significa concretamente — é arquitetura, governance, cultura ou produto?",
+      "Você fez Bradesco escalar IA dentro de uma das instituições mais reguladas do Brasil. Para IA aplicada a saneamento (regulada pela ANA, agências estaduais, Lei 14.026/2020), o playbook de governança é replicável?"
+    ]
+  },
+  {
+    id: 11,
+    name: "Carlos Octavio",
+    role: "Director of Architecture, Data & AI Strategy",
+    company: "Globo",
+    category: "midia",
+    initials: "CO",
+    tags: ["TV 3.0", "Metadados", "Deepfake", "AI Program"],
+    bio: "Bacharel em Ciência da Computação pela PUC-Rio, mestre em Eng. de Software, MBA Fundação Dom Cabral. 24+ anos na Globo. Orquestra a estratégia TV 3.0, Silicon Valley Hub, Governança de Dados e IA. Vice-Presidente da SET. Co-autor do paper IBC Best Conference Paper sobre big data e recomendação de vídeo.",
+    topics: [
+      "TV 3.0 híbrida (broadcast + streaming, 4K/UHD, inserção dinâmica de publicidade) alinhada à Copa do Mundo 2026",
+      "AI Program com imersão para ~250 executivos em parceria com a Singularity",
+      "Parceria com Centro Pi (IMPA) para extração automática de metadados em base de 1,5 milhão de filmes/séries",
+      "Piloto de deepfake em conteúdo — debate sobre regulatório de proveniência (C2PA)",
+      "IBC2024 e IBC2025 em Amsterdã sobre mídia imersiva e streaming adaptativo"
+    ],
+    questions: [
+      "O AI Program de imersão para 250 executivos da Globo é referência de cultura digital. Qual a estrutura curricular dele e o que mais surpreendeu como impacto comportamental no C-level?",
+      "A parceria com Centro Pi/IMPA para extração de metadados é elegante. Em construção civil há gigantes informativos esquecidos (memoriais descritivos, AS BUILT, fotos de obra). Como vocês estruturam o pipeline de enriquecimento — RAG sobre vetor + grafo, agente classificador?",
+      "Você navega a tensão entre conteúdo proprietário e deepfake/IA generativa. Em obras, há reflexo direto: imagens de drones podem ser sintéticas, vistorias podem ser falsificadas. Qual sua leitura do regulatório de proveniência C2PA?",
+      "Globo é uma das maiores empresas brasileiras em escala de dados de comportamento. Qual lição de governança de dados você levaria para uma empresa com 1/1000 do tamanho mas com complexidade regulatória parecida (LGPD)?"
+    ]
+  },
+  {
+    id: 12,
+    name: "Celso Camilo",
+    role: "Prof. Associado UFG & Cofundador",
+    company: "UFG / CEIA",
+    category: "academia",
+    initials: "CC",
+    tags: ["Gaia", "Português BR", "EMBRAPII", "PBIA"],
+    bio: "Doutor em Inteligência Artificial pela UFU. Professor Associado do Instituto de Informática da UFG. Cofundador e Vice-Presidente do CEIA — Centro de Excelência em IA (30+ empresas parceiras, Unidade EMBRAPII desde 2020). Visiting Professor em Carnegie Mellon, UCLA e IIT-Gandhinagar. Visiting Scholar para engenheiros do NASA-JPL.",
+    topics: [
+      "Projeto Gaia (2025): primeiro modelo de IA generativa em português brasileiro — parceria UFG/CEIA + Google DeepMind (Gemma 3) + ABRIA",
+      "Testado pelo TCE-GO e TCM-GO. Frase: 'Desenvolver uma IA pensada para o Brasil é uma questão de soberania'",
+      "Paper 'Evaluating Large Language Models for Tax Law Reasoning' (2024-2025)",
+      "Grupo de Estudos em NLP do CEIA (2026): LLMs via APIs, RAG, agentes, sistemas multi-agentes, orquestração, memória e observabilidade",
+      "Figura central no PBIA — Plano Brasileiro de IA 2024-2028 e diplomacia acadêmica de IA com embaixadas e UNESCO"
+    ],
+    questions: [
+      "O CEIA opera em modelo tríplice hélice e é Unidade EMBRAPII. Para um pequeno empreendedor querendo desenvolver agente de IA para saneamento ou construção, qual o caminho prático de parceria — chamada pública, co-desenvolvimento via EMBRAPII, contratação direta?",
+      "Sobre o Gaia, treinado em português brasileiro: para domínios técnicos com vocabulário específico (NBR, ABNT, terminologia hidráulica/sanitária), qual a estratégia recomendada — fine-tuning sobre Gaia/Gemma 3, RAG puro, ou continual pre-training? Quando vale fazer cada um?",
+      "O PBIA 2024-2028 prevê investimentos federais. Quais oportunidades concretas (chamadas FINEP, EMBRAPII, MCTI) um empreendedor pode acessar em 2026 para projeto aplicado a infraestrutura urbana?",
+      "Qual a sua leitura sobre o que diferencia academicamente o Brasil em IA aplicada — versus apenas reproduzir o que vem dos EUA — e onde uma pequena empresa pode plugar nesse diferencial?"
+    ]
+  },
+  {
+    id: 13,
+    name: "Marcelo Braga",
+    role: "Presidente",
+    company: "IBM Brasil",
+    category: "bigtech",
+    initials: "MB",
+    tags: ["watsonx", "Quantum Network", "Letramento IA", "Enterprise"],
+    bio: "Na IBM desde 1998 (26+ anos) — toda a carreira na empresa. Análise de Sistemas pela UCB, MBA Fundação Dom Cabral, imersões em Harvard e Wharton. Foi VP de Vendas e VP de Software & Cloud (Watson, IBM Cloud Brasil). Presidente e Líder de Technology da IBM Brasil desde mar/2022.",
+    topics: [
+      "Defesa do letramento executivo em IA: 'Quem lidera precisa entender IA — não para codificar, mas para direcionar'",
+      "watsonx como plataforma central para enterprise AI — workflows, back-office e produtos regulados",
+      "IBM Quantum Network com 210+ membros e lançamento comercial em 2025",
+      "Cases brasileiros: Bradesco com BIA, Banco do Brasil com Db2 Data Gate + watsonx",
+      "Aquisição da Confluent para fortalecer plataforma de dados para agentes e workflows"
+    ],
+    questions: [
+      "O watsonx é forte em workflows de back-office e produtos regulados. Para uma empresa de saneamento/concessionária, qual o caso de uso watsonx mais maduro que rendeu ROI claro em 2025?",
+      "Sua tese de letramento de líderes é poderosa. Que conteúdo concreto funciona para C-level de empresas tradicionais (construtoras familiares, autarquias municipais) — não a aula técnica, mas o framework de decisão?",
+      "Computação quântica chega ao mercado em 2025. Para problemas combinatórios de engenharia (otimização de rotas de coleta de esgoto, planejamento de obra com restrições), em que horizonte realista isso supera heurísticas clássicas que já uso hoje?",
+      "Para um empreendedor solo com produto vertical de IA, qual a forma mais inteligente de parceria com IBM (revenda watsonx, co-go-to-market, programa de startups), considerando empresa pequena e setor regulado?"
+    ]
+  },
+  {
+    id: 14,
+    name: "Leandro Vieira",
+    role: "Senior VP AI & Tech Cloud LatAm",
+    company: "Oracle",
+    category: "bigtech",
+    initials: "LV",
+    tags: ["OCI", "Oracle Gemini", "REDATA", "AI Database Agent"],
+    bio: "Bacharelado pela FIAP, pós pela FIA, postgrado em IA e ML na Texas McCombs (UT Austin). Quase 15 anos na Oracle em trajetória de vendas até SVP. Anunciou em abr/2026 a expansão da parceria Oracle + Google Cloud com Oracle AI Database Agent for Gemini Enterprise.",
+    topics: [
+      "Oracle AI Database Agent for Gemini Enterprise: interação por linguagem natural com bancos Oracle (abr/2026)",
+      "Cases: TIM Brasil (agentes para faturas), CAIXA (46 mi de transações/dia), WideLabs (IA para Alzheimer no OCI), Hapvida (90% de assertividade diagnóstica)",
+      "REDATA: programa federal com isenção de PIS/Pasep, Cofins e IPI como vetor para o Brasil ser hub global de treino de modelos",
+      "'95% dos pilotos de IA fracassam por falta de alinhamento estratégico' — Oracle Data & AI Forum (ago/2025)",
+      "Oracle tem 2 datacenters no Brasil; OpenAI roda parte dos modelos na infraestrutura Oracle"
+    ],
+    questions: [
+      "O REDATA é uma mudança fiscal estrutural. Como uma startup pequena pode se beneficiar de um Brasil-hub de datacenters — o preço de OCI vai realmente cair, ou só beneficia hyperscalers globais?",
+      "A combinação Oracle + Gemini Enterprise + AI Database Agent é poderosa para empresas com Oracle EBS/Oracle Cloud ERP (frequente em construtoras de grande porte). Que MVP de agente vocês recomendam para uma construtora rodando Oracle ERP?",
+      "Existe vertical construção/saneamento já no radar Oracle, ou ainda é água-azul para parceria estruturada?",
+      "Você diz que 95% dos pilotos morrem por falta de alinhamento estratégico. Qual a pergunta única que você faz no primeiro encontro com C-level que filtra os 5% que vão dar certo?"
+    ]
+  },
+  {
+    id: 15,
+    name: "Alexandre Leão",
+    role: "Partner",
+    company: "Crescera Capital",
+    category: "financas",
+    initials: "AL",
+    tags: ["PE/VC", "EdTech IA", "Grupo Alun", "ColmeIA"],
+    bio: "Bacharel em Economia e MSc em Macroeconomia e Finanças pela PUC-Rio, Harvard PLD38 (2023-2025). Partner na Crescera Capital (~R$ 6 bi sob gestão) desde 2012. Membro do board em Alura/Grupo Alun, Wide Digital, PM3, 77Sol, Letrus. Liderou investimento de R$ 43 mi na ColmeIA.",
+    topics: [
+      "Crescera incorpora IA na rotina do Comitê de Investimentos — pioneira entre gestoras brasileiras",
+      "Grupo Alun (Alura + FIAP + PM3): R$ 1 bi de receita até 2027, 15 milhões de profissionais formados até 2030",
+      "~3 mil das 9 mil empresas atendidas pelo Grupo Alun já fizeram formação em IA",
+      "Grupo Alura reconhecida como Outliers 2026 da Endeavor e GSV 150 Global 2026",
+      "Investimento em ColmeIA: R$ 25 mi (2024) + R$ 18 mi follow-on (2025)"
+    ],
+    questions: [
+      "A Crescera tem forte tese em educação corporativa de IA (Alura, FIAP, PM3). Qual o gap mais visível que você tem visto nos programas — e onde uma operação pequena como o RochaDev pode complementar (formação técnica de nicho, IA aplicada a setor regulado)?",
+      "Sua experiência com ColmeIA pode mapear o que outras teses de agentes verticais B2B brasileiros vão precisar. Qual o patamar de receita / unit economics que você considera tese investível em 2026 para um agente vertical (ex.: construção, saneamento)?",
+      "Para um empreendedor vindo de engenharia que quer trilhar caminho venture-backed vs. bootstrap rentável, o que você lê hoje sobre o ambiente brasileiro pós-juros altos? Ainda faz sentido captar com VC ou bootstrap até ARR muito superior?",
+      "Que livro / framework / pessoa não-óbvio mais influenciou sua leitura de tese de educação digital, e por quê?"
+    ]
+  },
+  {
+    id: 16,
+    name: "Priscyla Laham",
+    role: "Presidente",
+    company: "Microsoft Brasil",
+    category: "bigtech",
+    initials: "PL",
+    tags: ["Copilot", "ConectAI", "Frontier Firms", "R$ 14,7 bi"],
+    bio: "Graduação em Marketing pela ESPM, MBA pelo Insper, Stanford Executive Program (2013). Começou na IBM aos 15 anos. Microsoft desde 2000, passou pelo Facebook/Meta Brasil como Diretora de Vendas, voltou à Microsoft. Presidente da Microsoft Brasil desde jan/2025 (3ª mulher no cargo).",
+    topics: [
+      "R$ 14,7 bi investidos no Brasil (2024-2027) em infraestrutura de nuvem e IA — campus de datacenters em São Paulo",
+      "ConectAI / Conecta+IA: meta de 5 milhões de brasileiros em IA. Em fev/2026: 6,6 mi iniciaram, 2,8 mi concluíram",
+      "Microsoft AI Tour São Paulo (11/02/2026): 3,5 mil pessoas, posicionando empresas como 'Frontier Firms' via agentes",
+      "Work IQ, Fabric IQ, Foundry IQ: agentes embarcados nos produtos Microsoft 365. XP economizou 9.000 horas com Copilot",
+      "Cases: Bradesco, Defensoria Pública SP, Petrobrás como Frontier Firms"
+    ],
+    questions: [
+      "Os R$ 14,7 bi vão criar capacidade local de cloud/IA. Para uma startup brasileira pequena, isso muda o TCO real (latência, residência de dados, FX) ou continua igual a Azure US East? Qual o calendário de soberania efetiva?",
+      "O programa ConectAI mira 5 milhões. Qual o gargalo de entrega real — falta de mentoria? Reconhecimento? Empregabilidade pós-curso? Onde existe lacuna em que uma operação de treinamento pequena pode complementar a Microsoft sem competir?",
+      "Empresas viram Frontier Firms com agentes Copilot. Para PMEs brasileiras com Microsoft 365 Business (não Enterprise), qual o kit mínimo viável de agente com ROI defensável em 6 meses?",
+      "Sua transição Microsoft → Meta → Microsoft é incomum. Que aprendizado de Meta (mais produto/consumer) você levou de volta para Microsoft (mais enterprise) que ainda usa hoje?"
+    ]
+  },
+  {
+    id: 17,
+    name: "Isabella Piratininga",
+    role: "Diretora de Tech e Inovação",
+    company: "iFood",
+    category: "startup",
+    initials: "IP",
+    tags: ["Ailo", "LCM", "Toqan", "Agentes Internos"],
+    bio: "Baseada no Rio. Graduação em Design, pós na FGV. 10+ anos no iFood como Product Leader. Hoje Diretora de Tecnologia e Inovação. iFood tem ~31% do time de tech feminino e ~45% das posições de liderança com diversidade.",
+    topics: [
+      "Ailo (lançado 10/10/2025): assistente de IA generativa do iFood via WhatsApp, voz, áudio e texto — +48% chance busca-carrinho, -33% tempo para fechar pedido",
+      "Large Commerce Model (LCM) proprietário — treinado em bilhões de interações reais, combinado com Anthropic, OpenAI e AWS",
+      "Agentes especializados: Jhow (entregadores), Cris (restaurantes), Rosie (consumidores), James (onboarding)",
+      "Plataforma Toqan (desde 2023): 3.500 agentes ativos, 50+ milhões de requisições/mês, 100% dos 8 mil colaboradores usando IA",
+      "Meta 'um agente por funcionário até mar/2026'; Privacy by design com modelo open-source interno de detecção de PII"
+    ],
+    questions: [
+      "O Ailo é caso raro de IA generativa com delta de conversão claro (+48% busca-carrinho, -33% tempo). Que insights replicáveis existem para B2B onde o 'produto' é mais técnico (ex.: cotação de obra, projeto sanitário) e o usuário fala em jargão técnico, não linguagem natural?",
+      "O LCM treinado em interações reais é um diferencial estratégico. Para domínios verticais menores (saneamento), qual o caminho factível de modelo proprietário sem capex Prosus — e onde se compromete RAG-only vs. fine-tuning?",
+      "Vocês têm 3.500 agentes internos rodando para 8 mil pessoas. Como acontece a governança real — quem aprova, quem mata, quem faz observability? É um framework replicável?",
+      "Sua trajetória de Design → liderança técnica sinaliza que IA muda o que conta como 'perfil tech'. Para um engenheiro civil sem formação em CS, que pontos de entrada concretos você sugere para construir credibilidade em produto de IA hoje?"
+    ]
+  },
+  {
+    id: 18,
+    name: "André Petenussi",
+    role: "CTO",
+    company: "Localiza&Co",
+    category: "industria",
+    initials: "AP",
+    tags: ["Liza", "GitHub Copilot", "Agentic Commerce", "AWS"],
+    bio: "Engenharia Elétrica pela Universidade Católica de Santos. Trajetória 100% em e-commerce e varejo digital: Submarino → Walmart → B2W → Netshoes (CTO 2016-2019) → Localiza&Co (CTO desde fev/2019). Vencedor do prêmio Executivo de TI do Ano 2024 e 2025 (IT Forum).",
+    topics: [
+      "Liza (set/2025): agente conversacional em site, WhatsApp, portal de voz — ~4 mil atendimentos/dia, 92% resolutividade digital",
+      "App integrado ao ChatGPT (fim/2025): usuário pede recomendação no ChatGPT e é direcionado ao ambiente Localiza",
+      "GitHub Copilot agent mode: 2,9 milhões de linhas de código editadas com IA, 21% de ganho de produtividade",
+      "Projeto Estrada Real: unificação Localiza/Unidas (5ª maior fusão corporativa nacional), 100% em AWS",
+      "Citado pela Microsoft como Frontier Firm; IA generativa em substituição a modelos humanos no marketing"
+    ],
+    questions: [
+      "Liza com 92% de resolutividade digital em B2C de mobilidade é extraordinário. Qual foi o trade-off principal entre LLM proprietário, RAG e workflow scripted que vocês fizeram para chegar nesse nível — e onde ainda dói?",
+      "A integração com ChatGPT (usuário pesquisa no ChatGPT → cai no Localiza) é o tipo de movimento que define agentic commerce. Para construção/saneamento, cotações por agente de IA estão próximas. Como você prepararia uma operação para isso desde já?",
+      "2,9 milhões de linhas com Copilot e 21% de ganho são números fortes. Em que tipo de código o ganho é maior (boilerplate, refactor, testes) e onde o ganho é menor ou negativo? Como você mensurou de fato?",
+      "Sua trajetória em e-commerce envolveu liderar uma das maiores fusões tech do Brasil. Para um CTO em transição (vindo de engenharia civil/infra), quais são os três livros / cursos / mentorias que mais te ajudaram na primeira virada de carreira?"
+    ]
+  },
+  {
+    id: 19,
+    name: "Cristina Cestari",
+    role: "CIO América do Sul",
+    company: "Volkswagen",
+    category: "industria",
+    initials: "CC2",
+    tags: ["Otto", "IA Embarcada", "AI4ALL", "Companionship"],
+    bio: "Processamento de Dados pela FATEC-Santos, MBA em Gestão pela ESPM, formação de Conselheiros pelo IBGC. 30+ anos em TI: 20 anos no Banco Itaú (liderando DevOps) e CIO da Volkswagen para América do Sul desde dez/2022. Forbes Brasil 'Melhores CIOs do Brasil 2025' (top 10 nacional).",
+    topics: [
+      "Otto / IA by Volks (mai/2025): primeira IA generativa desenvolvida por uma montadora no Brasil, embarcada no SUV VW Tera",
+      "Conceito 'Companionship': interação contínua e personalizada humano-sistema",
+      "AI4ALL — Value Hunting com Accenture e AWS para identificar, priorizar e capturar valor com IA",
+      "VW Tera: 100% brasileiro, fabricado em Taubaté, vendido em 20 países",
+      "Parcerias com Porsche Consulting: cibersegurança, digitalização e gestão da mudança em indústria regulada"
+    ],
+    questions: [
+      "O Otto é o caso brasileiro mais visível de IA generativa em montadora. Qual o fator decisivo para o conselho VW aprovar o projeto e qual o business case original — engajamento de usuário, dado proprietário, redução de custo de atendimento?",
+      "O conceito de 'Companionship' exige LLM em condições difíceis (carros conectados, latência, offline parcial, multimodal). Que arquitetura de inferência vocês escolheram (edge, cloud, híbrida) e por quê?",
+      "O AI4ALL com Accenture/AWS é um modelo replicável. Para construtoras médias brasileiras (sem Accenture/AWS dedicada), qual o MVP de Value Hunting com R$ 200 mil de orçamento total?",
+      "Você fez 20 anos no Itaú liderando DevOps e foi para uma montadora alemã. O que a indústria automotiva regulada ensina à TI bancária e vice-versa? Onde está o real diferencial cultural que importa?"
+    ]
+  },
+  {
+    id: 20,
+    name: "Cristiano Kruel",
+    role: "Chief Innovation Officer",
+    company: "StartSe",
+    category: "consultoria",
+    initials: "CK",
+    tags: ["IA Soberana", "Polímatas", "Vale do Silício", "China"],
+    bio: "Ciência da Computação pela PUC/RS. MBA FGV, especializações no MIT, IESE (Barcelona) e UTexas/McCombs. CIO e sócio da StartSe. Coautor do livro 'Organizações Infinitas' (Editora Gente). 30+ anos conectado ao ecossistema do Vale do Silício. Defensor da IA Soberana.",
+    topics: [
+      "Defensor da IA Soberana: 'Não existe a IA, mas as IAs' e 'IA não é problema de TI — é um desafio de cultura e visão'",
+      "Keynote 'Tudo o que eu entendia sobre IA estava errado!' no Fórum RNP 2025 (Brasília) — 'humildade corajosa'",
+      "Meia-vida do domínio da IA: comparação China, Vale do Silício e Brasil (podcast Alura, abr/2025)",
+      "Imersões internacionais ao Vale do Silício e China com a StartSe — 12 impactos da IA em carreira e negócios",
+      "Tese dos polímatas como perfil profissional do futuro em um mundo de modelos generalistas"
+    ],
+    questions: [
+      "Sua tese de IA Soberana é cada vez mais central. Para um pequeno empreendedor brasileiro, soberania vira o quê na prática — rodar Llama 3 em GPU brasileira, treinar em Gaia/Maritaca, hospedar em datacenter nacional, ou apenas LGPD e residência de dados? Onde mora o ROI real?",
+      "Você fala de 'meia-vida do conhecimento de IA'. Como você estrutura sua rotina pessoal de aprendizado (leituras, fontes, frequência, métodos) para se manter atualizado quando o conteúdo se obsoleta a cada 6 meses?",
+      "Da última imersão à China, que três tecnologias ou padrões culturais você trouxe que mudaram sua leitura de produto e que ainda não viraram mainstream no Brasil?",
+      "Para um engenheiro civil + fundador de operação de treinamento que constrói também produto de IA, sua tese de polímatas é especialmente atraente. Qual a disciplina que ainda falta no kit — direito digital, ciência cognitiva, design comportamental, geopolítica?"
+    ]
+  }
+];
+
+const CAT_LABELS = {
+  bigtech: 'Big Tech', startup: 'Startup', financas: 'Finanças',
+  industria: 'Indústria', academia: 'Academia', consultoria: 'Consultoria', midia: 'Mídia'
+};
+
+let activeFilter = 'all';
+let searchQuery = '';
+
+function renderSpeakers() {
+  const grid = document.getElementById('speakers-grid');
+  const filtered = SPEAKERS.filter(s => {
+    const matchCat = activeFilter === 'all' || s.category === activeFilter;
+    const q = searchQuery.toLowerCase();
+    const matchSearch = !q || s.name.toLowerCase().includes(q) ||
+      s.company.toLowerCase().includes(q) ||
+      s.role.toLowerCase().includes(q) ||
+      s.tags.some(t => t.toLowerCase().includes(q)) ||
+      s.bio.toLowerCase().includes(q);
+    return matchCat && matchSearch;
+  });
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results">Nenhum palestrante encontrado. Tente outro termo.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(s => `
+    <div class="speaker-card" data-id="${s.id}" tabindex="0" role="button" aria-label="Ver detalhes de ${s.name}">
+      <div class="card-top">
+        <div class="avatar bg-${s.category}">${s.id === 19 ? 'CC' : s.initials}</div>
+        <div class="card-info">
+          <div class="card-name">${s.name}</div>
+          <div class="card-role">${s.role}</div>
+          <div class="card-company col-${s.category}">${s.company}</div>
+        </div>
+      </div>
+      <span class="cat-badge badge-${s.category}">${CAT_LABELS[s.category]}</span>
+      <p class="card-bio">${s.bio}</p>
+      <div class="card-tags">${s.tags.slice(0,3).map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      <div class="card-footer">
+        <span class="view-btn">Ver detalhes →</span>
+        <span style="font-size:.75rem;color:var(--subtle)">${s.questions.length} perguntas</span>
+      </div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.speaker-card').forEach(card => {
+    card.addEventListener('click', () => openModal(+card.dataset.id));
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openModal(+card.dataset.id); });
+  });
+}
+
+function openModal(id) {
+  const s = SPEAKERS.find(sp => sp.id === id);
+  if (!s) return;
+
+  const initials = s.id === 19 ? 'CC' : s.initials;
+  document.getElementById('m-avatar').className = `modal-avatar bg-${s.category}`;
+  document.getElementById('m-avatar').textContent = initials;
+  document.getElementById('m-name').textContent = s.name;
+  document.getElementById('m-role').textContent = s.role;
+  document.getElementById('m-company').innerHTML = `<span class="col-${s.category}">${s.company}</span> · <span class="cat-badge badge-${s.category}">${CAT_LABELS[s.category]}</span>`;
+  document.getElementById('m-tags').innerHTML = s.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+  document.getElementById('m-accordion').innerHTML = `
+    <div class="acc-item open">
+      <button class="acc-trigger">
+        📋 Biografia Resumida
+        <svg class="acc-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-content"><p>${s.bio}</p></div>
+    </div>
+    <div class="acc-item open">
+      <button class="acc-trigger">
+        🔥 Tópicos Recentes 2025–2026
+        <svg class="acc-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-content">
+        <ul>${s.topics.map(t => `<li>${t}</li>`).join('')}</ul>
+      </div>
+    </div>
+    <div class="acc-item open">
+      <button class="acc-trigger">
+        💡 Perguntas Estratégicas
+        <svg class="acc-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-content">
+        <div class="question-list">
+          ${s.questions.map((q, i) => `
+            <div class="question-item">
+              <span class="q-num">Q${i+1}</span>
+              <span class="q-text">${q}</span>
+              <button class="q-copy" data-text="${encodeURIComponent(q)}">Copiar</button>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  // accordion toggles
+  document.querySelectorAll('.acc-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.acc-item').classList.toggle('open');
+    });
+  });
+
+  // copy buttons
+  document.querySelectorAll('.q-copy').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const text = decodeURIComponent(btn.dataset.text);
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copiado!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
+      } catch { btn.textContent = 'Erro'; }
+    });
+  });
+
+  const overlay = document.getElementById('modal-overlay');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal').scrollTop = 0;
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-overlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// filters
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeFilter = btn.dataset.cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderSpeakers();
+  });
+});
+
+// search
+document.getElementById('search').addEventListener('input', e => {
+  searchQuery = e.target.value;
+  renderSpeakers();
+});
+
+// countdown
+function updateCountdown() {
+  const target = new Date('2026-05-13T08:00:00-03:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('countdown').innerHTML = '<div class="countdown-item"><div class="countdown-num" style="color:var(--green)">🎉</div><div class="countdown-lbl">Acontecendo!</div></div>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// init
+renderSpeakers();
+
+// hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+function toggleMenu(open) {
+  hamburger.classList.toggle('open', open);
+  mobileMenu.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+hamburger.addEventListener('click', () => toggleMenu(!hamburger.classList.contains('open')));
+document.querySelectorAll('.mobile-link').forEach(a => {
+  a.addEventListener('click', () => toggleMenu(false));
+});
+
+// PWA install prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const banner = document.getElementById('install-banner');
+  if (!sessionStorage.getItem('pwa-dismissed')) banner.classList.add('show');
+});
+document.getElementById('install-btn').addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  document.getElementById('install-banner').classList.remove('show');
+});
+document.getElementById('install-dismiss').addEventListener('click', () => {
+  document.getElementById('install-banner').classList.remove('show');
+  sessionStorage.setItem('pwa-dismissed', '1');
+});
+
+// service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
