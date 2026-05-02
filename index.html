@@ -178,6 +178,12 @@
     .filter-btn[data-cat="industria"].active { background: var(--rose); }
     .filter-btn[data-cat="consultoria"].active { background: var(--orange); color: #000; }
     .filter-btn[data-cat="midia"].active { background: var(--pink); }
+    /* workshop filter active states */
+    .filter-btn[data-wcat="all"].active       { background: var(--primary); color: #fff; border-color: transparent; }
+    .filter-btn[data-wcat="navigators"].active { background: var(--amber); color: #000; border-color: transparent; }
+    .filter-btn[data-wcat="hackers"].active    { background: var(--cyan); color: #000; border-color: transparent; }
+    .filter-btn[data-wcat="ninjas"].active     { background: var(--rose); color: #fff; border-color: transparent; }
+    .filter-btn[data-wcat="featured"].active   { background: var(--primary); color: #fff; border-color: transparent; }
 
     .speakers-grid {
       display: grid;
@@ -379,6 +385,122 @@
     }
     .install-dismiss { background: none; border: none; color: var(--subtle); cursor: pointer; font-size: 1.1rem; padding: 4px; }
 
+    /* ── WORKSHOPS ── */
+    #workshops { background: var(--bg2); }
+    .access-box {
+      background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.25);
+      border-radius: var(--radius); padding: 18px 22px;
+      display: flex; align-items: flex-start; gap: 14px; margin-bottom: 36px;
+    }
+    .access-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .access-body h4 { font-size: .9rem; font-weight: 700; color: var(--amber); margin-bottom: 8px; }
+    .access-body ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .access-body ul li { font-size: .82rem; color: var(--muted); }
+    .access-body ul li::before { content: '→'; color: var(--amber); margin-right: 6px; }
+
+    .level-legend { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 36px; }
+    .level-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; }
+    .level-card h4 { font-size: .875rem; font-weight: 700; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+    .level-card p { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+    .level-card.navigators h4 { color: var(--amber); }
+    .level-card.hackers h4 { color: var(--cyan); }
+    .level-card.ninjas h4 { color: var(--rose); }
+
+    .w-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+    @media(max-width:640px) {
+      .w-filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
+      .w-filters::-webkit-scrollbar { display: none; }
+      .w-filters .filter-btn { flex-shrink: 0; }
+      .level-legend { grid-template-columns: 1fr; }
+    }
+
+    .workshops-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    @media(max-width:640px) { .workshops-grid { grid-template-columns: 1fr; } }
+
+    .workshop-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: border-color .2s, transform .2s;
+    }
+    .workshop-card.featured { border-color: rgba(124,58,237,0.35); background: rgba(124,58,237,0.04); }
+    .workshop-card:hover { transform: translateY(-3px); }
+    .workshop-card:hover:not(.featured) { border-color: rgba(255,255,255,0.18); }
+    .workshop-card.featured:hover { border-color: rgba(124,58,237,0.6); box-shadow: 0 12px 40px rgba(124,58,237,0.12); }
+
+    .w-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .w-priority {
+      width: 28px; height: 28px; border-radius: 50; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--primary), #4F46E5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .72rem; font-weight: 800; color: #fff; border-radius: 50%;
+    }
+    .w-level { padding: 3px 10px; border-radius: 99px; font-size: .7rem; font-weight: 700; }
+    .w-level.navigators { background: rgba(245,158,11,0.15); color: var(--amber); }
+    .w-level.hackers    { background: rgba(6,182,212,0.15);  color: var(--cyan); }
+    .w-level.ninjas     { background: rgba(244,63,94,0.15);   color: var(--rose); }
+    .w-featured-tag {
+      display: flex; align-items: center; gap: 4px;
+      padding: 3px 10px; border-radius: 99px;
+      background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4);
+      font-size: .7rem; font-weight: 700; color: var(--primary-light);
+    }
+
+    .w-title { font-size: 1.05rem; font-weight: 800; line-height: 1.3; }
+    .w-desc {
+      font-style: italic; color: var(--muted); font-size: .85rem;
+      border-left: 3px solid rgba(124,58,237,0.4); padding-left: 12px; line-height: 1.6;
+    }
+    .w-facilitator { font-size: .78rem; color: var(--primary-light); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+    .w-facilitator::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--primary-light); flex-shrink: 0; }
+
+    .w-acc { margin-top: 2px; }
+    .w-acc-item { border-top: 1px solid var(--border); }
+    .w-acc-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0; background: none; border: none;
+      color: var(--muted); font-size: .8rem; font-weight: 600; cursor: pointer; gap: 8px; transition: color .2s;
+    }
+    .w-acc-trigger:hover { color: var(--text); }
+    .w-acc-icon { transition: transform .22s; flex-shrink: 0; }
+    .w-acc-item.open .w-acc-icon { transform: rotate(180deg); }
+    .w-acc-content { display: none; padding-bottom: 12px; }
+    .w-acc-item.open .w-acc-content { display: block; }
+    .w-acc-content p { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+
+    .w-questions { display: flex; flex-direction: column; gap: 8px; }
+    .w-q-item {
+      background: rgba(124,58,237,0.06); border: 1px solid rgba(124,58,237,0.15);
+      border-radius: 6px; padding: 10px 12px; display: flex; gap: 8px; align-items: flex-start;
+    }
+    .w-q-num { color: var(--primary-light); font-weight: 800; font-size: .75rem; flex-shrink: 0; margin-top: 2px; }
+    .w-q-text { font-size: .8rem; color: var(--text); line-height: 1.6; flex: 1; }
+    .w-q-copy {
+      flex-shrink: 0; padding: 3px 8px; border-radius: 99px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--muted); font-size: .65rem; cursor: pointer; transition: all .2s; white-space: nowrap;
+    }
+    .w-q-copy:hover { border-color: var(--primary); color: var(--primary-light); }
+    .w-q-copy.copied { border-color: var(--green); color: var(--green); }
+
+    .conf-block { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .conf-block h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
+    .conf-block .conf-sub { color: var(--muted); font-size: .875rem; margin-bottom: 24px; }
+    .conf-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+    .conf-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    .conf-table th {
+      padding: 12px 16px; background: rgba(255,255,255,0.04); text-align: left;
+      font-weight: 700; font-size: .75rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .5px; border-bottom: 1px solid var(--border); white-space: nowrap;
+    }
+    .conf-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: middle; }
+    .conf-table tr:last-child td { border-bottom: none; }
+    .conf-format { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: .72rem; font-weight: 700; }
+    .conf-format.palestra { background: rgba(6,182,212,0.15); color: var(--cyan); }
+    .conf-format.mini { background: rgba(16,185,129,0.15); color: var(--green); }
+    .conf-time { font-weight: 700; color: var(--primary-light); white-space: nowrap; }
+    .conf-speaker { font-size: .78rem; color: var(--muted); margin-top: 3px; }
+
     /* scrollbar */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -418,6 +540,7 @@
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#temas">Temas</a></li>
     <li><a href="#palestrantes">Palestrantes</a></li>
+    <li><a href="#workshops">Workshops</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -428,6 +551,7 @@
   <a href="#sobre" class="mobile-link">Sobre</a>
   <a href="#temas" class="mobile-link">Temas</a>
   <a href="#palestrantes" class="mobile-link">Palestrantes</a>
+  <a href="#workshops" class="mobile-link">Workshops</a>
 </div>
 
 <!-- HERO -->
@@ -523,6 +647,89 @@
     </div>
 
     <div class="speakers-grid" id="speakers-grid"></div>
+  </div>
+</section>
+
+<!-- WORKSHOPS -->
+<section id="workshops" style="padding: 80px 24px;">
+  <div style="max-width:1200px;margin:0 auto">
+
+    <div class="section-header">
+      <div class="section-label">Oficinas & Workshops</div>
+      <h2 class="section-title">11 workshops práticos</h2>
+      <p class="section-sub">Sessões hands-on com casos reais — do estratégico ao técnico avançado. Filtre por nível e copie as perguntas para levar ao evento.</p>
+    </div>
+
+    <div class="access-box">
+      <div class="access-icon">🎫</div>
+      <div class="access-body">
+        <h4>Acesso Restrito — Credencial Interactive ou Platinum</h4>
+        <ul>
+          <li>Credencial Explorer dá acesso apenas ao Palco Principal e AI EXPO</li>
+          <li>Programação completa disponível no app StartSe (login com e-mail de compra)</li>
+          <li>Sem gravações disponíveis após o evento</li>
+          <li>Tradução simultânea para palestrantes internacionais (sem custo adicional)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="level-legend">
+      <div class="level-card navigators">
+        <h4>🧭 Navigators</h4>
+        <p>Empresários e altos executivos que acreditam que a IA pode transformar seus negócios</p>
+      </div>
+      <div class="level-card hackers">
+        <h4>⚙️ Hackers</h4>
+        <p>Conhecimento intermediário — aprofundar técnicas, ferramentas e arquiteturas de IA</p>
+      </div>
+      <div class="level-card ninjas">
+        <h4>🥷 Ninjas</h4>
+        <p>Avançados que já dominam o básico e querem ir além com aplicações complexas</p>
+      </div>
+    </div>
+
+    <div class="w-filters" id="w-filters">
+      <button class="filter-btn active" data-wcat="all">Todos (11)</button>
+      <button class="filter-btn" data-wcat="navigators">🧭 Navigators</button>
+      <button class="filter-btn" data-wcat="hackers">⚙️ Hackers</button>
+      <button class="filter-btn" data-wcat="ninjas">🥷 Ninjas</button>
+      <button class="filter-btn" data-wcat="featured">⭐ Savelli</button>
+    </div>
+
+    <div class="workshops-grid" id="workshops-grid"></div>
+
+    <!-- Conference schedule -->
+    <div class="conf-block">
+      <h3>🎤 Conferências na Grade — 13/05</h3>
+      <p class="conf-sub">Palestras integradas à programação do dia 1</p>
+      <div class="conf-table-wrap">
+        <table class="conf-table">
+          <thead>
+            <tr>
+              <th>Horário</th>
+              <th>Título</th>
+              <th>Formato</th>
+              <th>Palestrante</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="conf-time">11:00–12:00</span></td>
+              <td>O Estado da Inteligência Artificial em 2026</td>
+              <td><span class="conf-format palestra">Palestra</span></td>
+              <td>Rafael Siqueira<div class="conf-speaker">McKinsey & Company</div></td>
+            </tr>
+            <tr>
+              <td><span class="conf-time">11:00–11:30</span></td>
+              <td>O Estado Inteligente: Por que digitalizar não basta</td>
+              <td><span class="conf-format mini">Mini Palestra</span></td>
+              <td>Téo Foresti Girardi</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1199,6 +1406,193 @@ setInterval(updateCountdown, 1000);
 
 // init
 renderSpeakers();
+
+// ── WORKSHOPS DATA ──
+const WORKSHOPS = [
+  {
+    id: 1, priority: 11,
+    title: "Sua Empresa Tem Chefes Demais",
+    description: "Entenda como a IA está desmontando hierarquias artificiais e revelando quem realmente cria valor nas organizações.",
+    why: "A IA expõe estruturas organizacionais que apenas distribuem aprovação sem gerar valor. Workshop estratégico para quem lidera equipes ou quer entender o impacto da IA na gestão.",
+    level: "navigators", featured: false, facilitator: null, questions: []
+  },
+  {
+    id: 2, priority: 7,
+    title: "Promptar é o Novo Codar",
+    description: "Como o valor do desenvolvedor migrou da escrita de códigos para a capacidade de pensar, especificar e orquestrar sistemas com IA.",
+    why: "Para engenheiros e desenvolvedores que querem entender onde está o novo diferencial competitivo. Diretamente conectado ao trabalho do RochaDev — o que ensinar e como posicionar programação na era dos agentes.",
+    level: "hackers", featured: false, facilitator: null, questions: []
+  },
+  {
+    id: 3, priority: 3,
+    title: "Existem Muitas IAs e Você Está Usando as Erradas",
+    description: "Aprenda a escolher, combinar e arquitetar modelos de IA de forma inteligente.",
+    why: "Workshop prático de arquitetura multi-modelo — Claude, Gemini, GPT-4o, Llama, Gemma. Fundamental para quem constrói soluções verticais e precisa otimizar custo, qualidade e latência.",
+    level: "hackers", featured: false, facilitator: null,
+    questions: [
+      "Para soluções com requisitos de residência de dados no Brasil (LGPD + setor público), qual a combinação de modelos que você recomenda em 2026?",
+      "Quando faz sentido usar um modelo pequeno fine-tunado (ex: Gemma 3 treinado em normas ABNT) versus um modelo grande generalista com RAG?"
+    ]
+  },
+  {
+    id: 4, priority: 9,
+    title: "AI Self Defense",
+    description: "As técnicas de defesa pessoal contra ataques de IA.",
+    why: "Prompt injection, deepfakes, desinformação gerada por IA, engenharia social automatizada. Essencial para quem lida com clientes corporativos e dados sensíveis (obras, contratos, saneamento).",
+    level: "hackers", featured: false, facilitator: null, questions: []
+  },
+  {
+    id: 5, priority: 2,
+    title: "Claude Cowork: IA como Colega de Trabalho",
+    description: "Casos de uso enterprise e como times estão usando Cowork no dia a dia.",
+    why: "Workshop ministrado diretamente pelo representante da Anthropic no Brasil. Cowork é o agente de desktop integrado a GSuite, Slack, Figma e arquivos locais via MCP. Oportunidade única de ver o estado da arte em agentes agentic na prática.",
+    level: "hackers", featured: true, facilitator: "Henrique Savelli — Arquiteto de AI na Anthropic",
+    questions: [
+      "Para um projeto de agente vertical em construção civil (consulta a normas ABNT, extração de dados de planilhas SINAPI, geração de memoriais), qual a diferença prática entre usar Claude Code em modo agentic versus construir com a API diretamente?",
+      "Como o MCP habilita que o Claude Cowork se conecte a sistemas proprietários legados (como ERPs de construtoras — Sienge, UAU, Mega) sem expor dados sensíveis?",
+      "Qual o limite atual do Claude Code para projetos com múltiplos arquivos interdependentes e contexto técnico pesado (ex: projeto full-stack de painel de gestão de obras)?"
+    ]
+  },
+  {
+    id: 6, priority: 8,
+    title: "Código Virou Commodity?",
+    description: "Escrever código deixou de ser diferencial? Onde está o novo valor da engenharia de software na era da IA.",
+    why: "Questão central para o RochaDev: o que ensinar quando o código pode ser gerado? Workshop que vai redefinir o currículo dos próximos treinamentos.",
+    level: "hackers", featured: false, facilitator: null, questions: []
+  },
+  {
+    id: 7, priority: 4,
+    title: "Treinar Pessoas como em 2010 é Antiético",
+    description: "Um convite direto para repensar educação corporativa, aprendizagem contínua e o papel do treinamento em um mundo acelerado por IA.",
+    why: "Diretamente estratégico para o Código sem Fronteiras e futuras edições do RochaDev. Como redesenhar a experiência de aprendizado quando as ferramentas mudam a cada mês?",
+    level: "navigators", featured: false, facilitator: null,
+    questions: [
+      "Como redesenhar uma jornada de aprendizado de desenvolvimento web para engenheiros quando as ferramentas de IA mudam a cada 3 meses?",
+      "Qual o papel de projetos reais entregues durante o treinamento versus conteúdo teórico, dado o ritmo atual de mudança?"
+    ]
+  },
+  {
+    id: 8, priority: 6,
+    title: "GEO, AIO ou AEO",
+    description: "O fim do 'busca por palavras-chave': as dicas práticas para os agentes de IA recomendarem o seu negócio.",
+    why: "GEO (Generative Engine Optimization), AIO (Agent Intent Optimization — termo de Paul Accornero) e AEO (Answer Engine Optimization) são o novo SEO. Fundamental para visibilidade do RochaDev e dos produtos desenvolvidos para clientes.",
+    level: "hackers", featured: false, facilitator: null, questions: []
+  },
+  {
+    id: 9, priority: 10,
+    title: "Líderes Não Letrados",
+    description: "Detectando sinais de lideranças onde a 'ficha ainda não caiu'.",
+    why: "Workshop de diagnóstico organizacional — como identificar e trabalhar com líderes que ainda não entenderam a urgência da IA. Útil para quem vende transformação digital para construtoras e prefeituras.",
+    level: "navigators", featured: false, facilitator: null, questions: []
+  },
+  {
+    id: 10, priority: 1,
+    title: "Claude Code em Ação",
+    description: "A jornada completa de quem quer começar a usar Claude Code de verdade. Do setup básico até workflows mais avançados com agentes.",
+    why: "Workshop hands-on sobre Claude Code — ferramenta de linha de comando agentic da Anthropic. Oportunidade direta de aprender com quem está mais próximo do produto. Alta prioridade para desenvolvedores.",
+    level: "ninjas", featured: true, facilitator: "Henrique Savelli — Arquiteto de AI na Anthropic",
+    questions: [
+      "Para um projeto de agente vertical em construção civil (consulta a normas ABNT, extração de dados de planilhas SINAPI, geração de memoriais), qual a diferença prática entre usar Claude Code em modo agentic versus construir com a API diretamente?",
+      "Como o MCP habilita que o Claude Cowork se conecte a sistemas proprietários legados (como ERPs de construtoras — Sienge, UAU, Mega) sem expor dados sensíveis?",
+      "Qual o limite atual do Claude Code para projetos com múltiplos arquivos interdependentes e contexto técnico pesado (ex: projeto full-stack de painel de gestão de obras)?"
+    ]
+  },
+  {
+    id: 11, priority: 5,
+    title: "Beyond Vibe Coding",
+    description: "Chega de lero-lero: Vibe coding é para os fracos! Codar na raça é para os ultrapassados.",
+    why: "A provocação boa: nem geração cega de código por IA, nem programação manual linha por linha. Como encontrar o meio-termo entre engenharia real e produtividade com IA?",
+    level: "ninjas", featured: false, facilitator: null,
+    questions: [
+      "Onde está a linha entre vibe coding aceitável (produtividade) e vibe coding perigoso (dívida técnica oculta)?",
+      "Para um produto entregue a cliente regulado (prefeitura, concessionária de saneamento), que práticas de engenharia não se negocia mesmo com IA gerando 80% do código?"
+    ]
+  }
+];
+
+const W_LEVEL_LABELS = { navigators: '🧭 Navigators', hackers: '⚙️ Hackers', ninjas: '🥷 Ninjas' };
+let activeWFilter = 'all';
+
+function renderWorkshops() {
+  const grid = document.getElementById('workshops-grid');
+  let filtered = WORKSHOPS.filter(w => {
+    if (activeWFilter === 'all') return true;
+    if (activeWFilter === 'featured') return w.featured;
+    return w.level === activeWFilter;
+  });
+  filtered = filtered.slice().sort((a, b) => a.priority - b.priority);
+
+  grid.innerHTML = filtered.map(w => `
+    <div class="workshop-card${w.featured ? ' featured' : ''}">
+      <div class="w-top">
+        <div class="w-priority" title="Prioridade #${w.priority}">${w.priority}</div>
+        <span class="w-level ${w.level}">${W_LEVEL_LABELS[w.level]}</span>
+        ${w.featured ? `<span class="w-featured-tag">⭐ Anthropic</span>` : ''}
+      </div>
+      <div class="w-title">${w.title}</div>
+      <div class="w-desc">${w.description}</div>
+      ${w.facilitator ? `<div class="w-facilitator">${w.facilitator}</div>` : ''}
+      <div class="w-acc">
+        <div class="w-acc-item open">
+          <button class="w-acc-trigger">
+            💡 Por que importa
+            <svg class="w-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="w-acc-content"><p>${w.why}</p></div>
+        </div>
+        ${w.questions.length ? `
+        <div class="w-acc-item">
+          <button class="w-acc-trigger">
+            ❓ Perguntas estratégicas (${w.questions.length})
+            <svg class="w-acc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="w-acc-content">
+            <div class="w-questions">
+              ${w.questions.map((q, i) => `
+                <div class="w-q-item">
+                  <span class="w-q-num">Q${i+1}</span>
+                  <span class="w-q-text">${q}</span>
+                  <button class="w-q-copy" data-text="${encodeURIComponent(q)}">Copiar</button>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  // accordion toggles
+  grid.querySelectorAll('.w-acc-trigger').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.w-acc-item').classList.toggle('open'));
+  });
+
+  // copy buttons
+  grid.querySelectorAll('.w-q-copy').forEach(btn => {
+    btn.addEventListener('click', async e => {
+      e.stopPropagation();
+      const text = decodeURIComponent(btn.dataset.text);
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copiado!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
+      } catch { btn.textContent = 'Erro'; }
+    });
+  });
+}
+
+// workshop filter buttons
+document.getElementById('w-filters').addEventListener('click', e => {
+  const btn = e.target.closest('[data-wcat]');
+  if (!btn) return;
+  activeWFilter = btn.dataset.wcat;
+  document.querySelectorAll('[data-wcat]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderWorkshops();
+});
+
+renderWorkshops();
 
 // hamburger menu
 const hamburger = document.getElementById('hamburger');
