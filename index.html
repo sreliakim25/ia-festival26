@@ -500,6 +500,23 @@
     .conf-format.mini { background: rgba(16,185,129,0.15); color: var(--green); }
     .conf-time { font-weight: 700; color: var(--primary-light); white-space: nowrap; }
     .conf-speaker { font-size: .78rem; color: var(--muted); margin-top: 3px; }
+    .conf-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+    .conf-tab { padding: 8px 22px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: .85rem; font-weight: 600; cursor: pointer; transition: all .2s; }
+    .conf-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .conf-tab-panel { display: none; }
+    .conf-tab-panel.active { display: block; }
+    .conf-format.workshop { background: rgba(245,158,11,0.15); color: var(--amber); }
+    .conf-format.talk { background: rgba(236,72,153,0.15); color: var(--pink); }
+    .conf-format.painel { background: rgba(249,115,22,0.15); color: var(--orange); }
+    .conf-table tr.my-agenda { background: rgba(124,58,237,0.07); }
+    .conf-table tr.my-agenda .conf-time { color: var(--green); }
+    .agenda-badge { display: inline-block; font-size: .62rem; font-weight: 700; background: rgba(16,185,129,0.15); color: var(--green); padding: 2px 7px; border-radius: 99px; margin-left: 6px; vertical-align: middle; white-space: nowrap; }
+    .conf-local { font-size: .74rem; color: var(--muted); white-space: nowrap; }
+    .conf-priority { font-size: .78rem; letter-spacing: -2px; opacity: .65; white-space: nowrap; }
+    .conf-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; font-size: .76rem; color: var(--muted); align-items: center; }
+    .conf-filter-agenda { padding: 8px 18px; border-radius: 99px; border: 1px solid rgba(16,185,129,0.4); background: transparent; color: var(--green); font-size: .85rem; font-weight: 600; cursor: pointer; transition: all .2s; white-space: nowrap; }
+    .conf-filter-agenda.active { background: rgba(16,185,129,0.15); border-color: var(--green); }
+    .filter-agenda-on .conf-table tr:not(.my-agenda) { display: none; }
 
     /* scrollbar */
     ::-webkit-scrollbar { width: 6px; }
@@ -541,6 +558,7 @@
     <li><a href="#temas">Temas</a></li>
     <li><a href="#palestrantes">Palestrantes</a></li>
     <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#grade">Grade</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -552,6 +570,7 @@
   <a href="#temas" class="mobile-link">Temas</a>
   <a href="#palestrantes" class="mobile-link">Palestrantes</a>
   <a href="#workshops" class="mobile-link">Workshops</a>
+  <a href="#grade" class="mobile-link">Grade</a>
 </div>
 
 <!-- HERO -->
@@ -699,34 +718,40 @@
     <div class="workshops-grid" id="workshops-grid"></div>
 
     <!-- Conference schedule -->
-    <div class="conf-block">
-      <h3>🎤 Conferências na Grade — 13/05</h3>
-      <p class="conf-sub">Palestras integradas à programação do dia 1</p>
-      <div class="conf-table-wrap">
-        <table class="conf-table">
-          <thead>
-            <tr>
-              <th>Horário</th>
-              <th>Título</th>
-              <th>Formato</th>
-              <th>Palestrante</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="conf-time">11:00–12:00</span></td>
-              <td>O Estado da Inteligência Artificial em 2026</td>
-              <td><span class="conf-format palestra">Palestra</span></td>
-              <td>Rafael Siqueira<div class="conf-speaker">McKinsey & Company</div></td>
-            </tr>
-            <tr>
-              <td><span class="conf-time">11:00–11:30</span></td>
-              <td>O Estado Inteligente: Por que digitalizar não basta</td>
-              <td><span class="conf-format mini">Mini Palestra</span></td>
-              <td>Téo Foresti Girardi</td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="conf-block" id="grade">
+      <h3>📅 Grade Completa de Palestras</h3>
+      <p class="conf-sub">Dias 13 e 14 de Maio · Pro Magno, São Paulo · ~80 sessões entre Palco, Oficinas e Arena de Negócios</p>
+
+      <div class="conf-tabs">
+        <button class="conf-tab active" data-day="13">📆 Dia 13 — Quarta-feira</button>
+        <button class="conf-tab" data-day="14">📆 Dia 14 — Quinta-feira</button>
+        <button class="conf-filter-agenda" id="btn-filter-agenda">✅ Só Minha Agenda</button>
+      </div>
+
+      <div class="conf-tab-panel active" id="conf-day-13">
+        <div class="conf-table-wrap">
+          <table class="conf-table">
+            <thead><tr><th>Horário</th><th>Título</th><th>Palestrante</th><th>Local</th><th>Tipo</th><th>Prio</th></tr></thead>
+            <tbody id="sched-body-d13"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="conf-tab-panel" id="conf-day-14">
+        <div class="conf-table-wrap">
+          <table class="conf-table">
+            <thead><tr><th>Horário</th><th>Título</th><th>Palestrante</th><th>Local</th><th>Tipo</th><th>Prio</th></tr></thead>
+            <tbody id="sched-body-d14"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="conf-legend">
+        <span><span class="conf-format palestra">Palestra</span> Palco Principal</span>
+        <span><span class="conf-format workshop">Workshop</span> Oficinas práticas</span>
+        <span><span class="conf-format talk">Talk</span> Arena de Negócios</span>
+        <span><span class="conf-format painel">Painel</span> Multi-speaker</span>
+        <span><span class="agenda-badge">✅ Minha Agenda</span> Selecionado por você</span>
       </div>
     </div>
 
@@ -1627,6 +1652,133 @@ document.getElementById('install-dismiss').addEventListener('click', () => {
   document.getElementById('install-banner').classList.remove('show');
   sessionStorage.setItem('pwa-dismissed', '1');
 });
+
+// ── SCHEDULE DATA ────────────────────────────────────────────────────────────
+// f: palestra | workshop | talk | painel  |  p: priority 1–5  |  a: minha agenda
+const SCHEDULE_D13 = [
+  {h:'09:00–09:43',t:'A nova estera de produção: fábrica de plataformas com Lovable e Vibe Coding',s:'Rafael Martins',l:'Oficina 1',f:'workshop',p:5,a:false},
+  {h:'09:00–09:43',t:'Visão sistêmica da IA',s:'Matheus Garcia',l:'Oficina 2',f:'workshop',p:4,a:false},
+  {h:'09:00–09:43',t:'Construindo um Radar de Sinais com Claude Skills e Vibe Coding',s:'Tiago Perri',l:'Oficina 3',f:'workshop',p:5,a:true},
+  {h:'09:20–09:45',t:'IA nas trincheiras: desafio de gerir agentes em produção',s:'Matheus Garcia',l:'Palco Principal',f:'palestra',p:5,a:false},
+  {h:'09:45–10:15',t:'Pense maior com Claude: Agentes em toda a empresa',s:'Henrique Savelli',l:'Palco Principal',f:'palestra',p:5,a:true},
+  {h:'10:00–10:43',t:'AIOPs: estruturando a gestão de agentes de IA',s:'Valber Azevedo',l:'Oficina 1',f:'workshop',p:4,a:false},
+  {h:'10:00–10:43',t:'Do atendimento ao fechamento: agentes de IA 24h',s:'Enio Moraes',l:'Oficina 2',f:'workshop',p:4,a:false},
+  {h:'10:00–10:43',t:'Da campanha ao comando: MarTech, IA e o novo poder do marketing',s:'Leornardo Securrsto',l:'Oficina 3',f:'workshop',p:3,a:false},
+  {h:'10:15–10:35',t:'A Era Agêntica começou: Google Cloud e agentes autônomos',s:'Milena Leal',l:'Palco Principal',f:'palestra',p:4,a:false},
+  {h:'10:35–11:05',t:'A ruptura do consumidor: agentes IA reestruturam relação marca-consumidor',s:'Paul Accornero',l:'Palco Principal',f:'palestra',p:4,a:false},
+  {h:'11:00–11:43',t:'Personas sintéticas',s:'Fernando Fiora',l:'Oficina 1',f:'workshop',p:3,a:false},
+  {h:'11:00–11:43',t:'Transforme dados confusos em iniciativas de alto impacto com IA',s:'Giuiette Battesito',l:'Oficina 3',f:'workshop',p:3,a:false},
+  {h:'11:00–11:43',t:'Physical AI e Biohacking: Alta performance nos negócios e na vida',s:'Wagner Sanchez',l:'Oficina 2',f:'workshop',p:2,a:false},
+  {h:'11:10–11:30',t:'Vibe Coding: o futuro do trabalho criativo',s:'Marcela Esterilha',l:'Palco Principal',f:'palestra',p:5,a:true},
+  {h:'11:35–12:20',t:'Impacto real: Como liderar e orquestrar na revolução GenAI',s:'Leandro Angelo',l:'Arena de Negócios',f:'talk',p:4,a:false},
+  {h:'11:45–12:15',t:'AI First: o novo sistema operacional das empresas',s:'Junior Bornell',l:'Palco Principal',f:'palestra',p:4,a:false},
+  {h:'12:00–12:43',t:'Muito além do vibe coding: aprenda a ir além da publicação de um MVP',s:'Vinícus Laha',l:'Oficina 1',f:'workshop',p:5,a:true},
+  {h:'12:00–12:43',t:'Explorando o Claude Design',s:'Gabriel Rocha Stublski',l:'Oficina 3',f:'workshop',p:4,a:false},
+  {h:'12:45–13:05',t:'Liderando a transformação de IA com confiança no mundo Enterprise',s:'Leonardo Zappa',l:'Arena de Negócios',f:'talk',p:4,a:false},
+  {h:'13:00–13:43',t:'Claude Code em Ação',s:'Henrique Savelli',l:'Oficina 1',f:'workshop',p:5,a:true},
+  {h:'13:00–13:43',t:'Claude Cowork: IA como colega de trabalho',s:'Henrique Savelli',l:'Oficina 1',f:'workshop',p:5,a:true},
+  {h:'13:00–13:43',t:'Genspark Workspace',s:'Bruno Melo',l:'Oficina 2',f:'workshop',p:3,a:false},
+  {h:'13:00–13:43',t:'Ralph Loop & Observabilidade para Engenharia de Software com IA',s:'Renato Barbosa',l:'Oficina 3',f:'workshop',p:3,a:false},
+  {h:'13:10–13:55',t:'Transformação Agêntica no atendimento',s:'Felipe Paisand / Rodrigo Assisd',l:'Arena de Negócios',f:'talk',p:3,a:false},
+  {h:'13:35–13:55',t:'Agentwashing: distinguir IA que decide vs agente real',s:'Francisco Moreno',l:'Arena de Negócios',f:'talk',p:5,a:true},
+  {h:'14:00–14:43',t:'Na prática: método de IA que CEO Viasoft usa para retomar controle',s:'Fábio Scaberni / Matheus Ismaael',l:'Oficina 3',f:'workshop',p:3,a:false},
+  {h:'14:00–14:43',t:'Explorando MCPs no Claude Code',s:'Rafael Ribeiro',l:'Oficina 2',f:'workshop',p:5,a:true},
+  {h:'14:05–14:25',t:'The AI Squad Factory',s:'Vinicius Galhiardi',l:'Arena de Negócios',f:'talk',p:4,a:false},
+  {h:'14:20–14:40',t:'Estamos em 2021, mas com IA: evitar perdas no uso a todo custo',s:'Leonardo Zappa',l:'Palco Principal',f:'palestra',p:4,a:false},
+  {h:'14:40–15:00',t:'Painel IA na prática: startups que escalam vs morrem no piloto',s:'Jose Caodaglio / Rodrigo Comazzetto / Thiago Rached',l:'Palco Principal',f:'painel',p:4,a:false},
+  {h:'15:00–15:20',t:'Medindo o impacto da IA na ciência: adoção, capacidade e impacto',s:'Ana Trišović',l:'Palco Principal',f:'palestra',p:4,a:false},
+  {h:'15:00–15:43',t:'Criação de agentes de IA',s:'Rafael Martins',l:'Oficina 1',f:'workshop',p:5,a:true},
+  {h:'15:00–15:43',t:'Sua próxima squad não será 100% humana: desenhando times híbridos',s:'Tassiana Rugoni',l:'Oficina 3',f:'workshop',p:4,a:false},
+  {h:'15:00–15:43',t:'Como escalar a IA no ERP com segurança e continuidade operacional',s:'Theron Morato',l:'Oficina 2',f:'workshop',p:4,a:false},
+  {h:'15:20–15:40',t:'Como é construir produtos de IA de fronteira dentro de um AGI lab',s:'Felipe Blanes',l:'Palco Principal',f:'palestra',p:3,a:false},
+  {h:'16:00–16:43',t:'Funil Comercial Agêntico: unindo CRM, IA e WhatsApp na prática',s:'Gustavo Torre-te',l:'Oficina 3',f:'workshop',p:5,a:true},
+  {h:'16:00–16:43',t:'Menos espera, mais receita: automação para clínicas, hotéis e educação',s:'Enio Moraes',l:'Oficina 2',f:'workshop',p:4,a:false},
+  {h:'16:00–16:43',t:'Puxe contexto de qualquer lugar para melhores decisões com Glean',s:'Leonardo Zappa',l:'Oficina 1',f:'workshop',p:4,a:false},
+  {h:'16:00–16:43',t:'Sua PME tem 4 problemas crônicos: agentes de IA resolvem em paralelo',s:'Pedro Lopes',l:'Oficina 3',f:'workshop',p:3,a:false},
+  {h:'16:10–16:30',t:'Do manual ao "companionship": quando IA ganha voz, contexto e marca',s:'Cristina Cestari',l:'Palco Principal',f:'palestra',p:4,a:false},
+  {h:'16:15–16:35',t:'Shadow AI',s:'Carlos Martins',l:'Arena de Negócios',f:'talk',p:3,a:false},
+  {h:'16:30–16:55',t:'IA sem ilusão: os desafios reais da implementação corporativa',s:'Carlos Octavio',l:'Palco Principal',f:'palestra',p:4,a:false},
+  {h:'16:30–17:00',t:'AI PDLC: como serão os squads de produto/tech operando em full potential',s:'Rafael Siqueira',l:'Palco Principal',f:'palestra',p:5,a:true},
+  {h:'16:55–17:20',t:'Humanos + Agentes: o novo modelo AI Powered redefinindo o futuro dos bancos',s:'Rafael Cavalcanti',l:'Palco Principal',f:'palestra',p:4,a:false},
+];
+
+const SCHEDULE_D14 = [
+  {h:'09:00–09:43',t:'A Nova Geração de Builders: Construindo startups 10x mais rápido com Lovable e Vibe Coding',s:'Rafael Martins',l:'Oficina 1',f:'workshop',p:5,a:true},
+  {h:'09:00–09:43',t:'Como construir um CLI matador para engenharia de software com IA',s:'Gabriel Rocha Stublski',l:'Oficina 3',f:'workshop',p:4,a:false},
+  {h:'09:20–09:45',t:'IA nas trincheiras: desafio de gerir agentes em produção',s:'Matheus Garcia',l:'Palco Principal',f:'palestra',p:5,a:true},
+  {h:'09:45–10:15',t:'Dentro do DPT: Como a L&D está transformando a interação com o cliente',s:'André Petenussi',l:'Palco Principal',f:'palestra',p:3,a:false},
+  {h:'10:00–10:43',t:'AIOPs: estruturando a gestão de agentes de IA',s:'Valber Azevedo',l:'Oficina 1',f:'workshop',p:4,a:false},
+  {h:'10:00–10:43',t:'Do atendimento ao fechamento: agentes de IA 24h',s:'Enio Moraes',l:'Oficina 2',f:'workshop',p:4,a:false},
+  {h:'10:00–10:43',t:'Da campanha ao comando: MarTech, IA e novo poder do marketing',s:'Leonardo Securrsto',l:'Oficina 3',f:'workshop',p:3,a:false},
+  {h:'10:15–10:35',t:'A Era Agêntica começou: Google Cloud e agentes autônomos',s:'Milena Leal',l:'Palco Principal',f:'palestra',p:4,a:true},
+  {h:'10:35–11:05',t:'A ruptura do consumidor: agentes IA reestruturam relação marca-consumidor',s:'Paul Accornero',l:'Palco Principal',f:'palestra',p:4,a:false},
+  {h:'11:00–11:43',t:'Personas sintéticas',s:'Fernando Fiora',l:'Oficina 1',f:'workshop',p:3,a:false},
+  {h:'11:00–11:43',t:'Transforme dados confusos em iniciativas de alto impacto com IA',s:'Giuiette Battesito',l:'Oficina 3',f:'workshop',p:3,a:false},
+  {h:'11:00–11:43',t:'Physical AI e Biohacking: Alta performance nos negócios e na vida',s:'Wagner Sanchez',l:'Oficina 2',f:'workshop',p:2,a:false},
+  {h:'11:10–11:35',t:'Vibe Coding: o futuro do trabalho criativo',s:'Marcela Esterilha',l:'Palco Principal',f:'palestra',p:5,a:false},
+  {h:'11:35–12:20',t:'Impacto real: Liderar e orquestrar na revolução GenAI',s:'Leandro Angelo',l:'Arena de Negócios',f:'talk',p:4,a:false},
+  {h:'11:45–12:15',t:'AI First: o novo sistema operacional das empresas',s:'Junior Bornell',l:'Palco Principal',f:'palestra',p:4,a:true},
+  {h:'12:00–12:43',t:'Muito além do vibe coding: ir além da publicação de um MVP',s:'Vinícus Laha',l:'Oficina 1',f:'workshop',p:5,a:true},
+  {h:'12:00–12:43',t:'Explorando o Claude Design',s:'Gabriel Rocha Stublski',l:'Oficina 3',f:'workshop',p:4,a:false},
+  {h:'12:45–13:05',t:'Liderando a transformação de IA com confiança no Enterprise',s:'Leonardo Zappa',l:'Arena de Negócios',f:'talk',p:4,a:false},
+  {h:'13:00–13:43',t:'Claude Code em Ação',s:'Henrique Savelli',l:'Oficina 1',f:'workshop',p:5,a:true},
+  {h:'13:00–13:43',t:'Genspark Workspace',s:'Bruno Melo',l:'Oficina 2',f:'workshop',p:3,a:false},
+  {h:'13:00–13:43',t:'Ralph Loop & Observabilidade para Engenharia de Software com IA',s:'Renato Barbosa',l:'Oficina 3',f:'workshop',p:3,a:false},
+  {h:'13:10–13:55',t:'Transformação Agêntica no atendimento',s:'Felipe Paisand / Rodrigo Assisd',l:'Arena de Negócios',f:'talk',p:3,a:false},
+  {h:'13:35–13:55',t:'Agentwashing: fake vs real IA — o que realmente decide',s:'Francisco Moreno',l:'Arena de Negócios',f:'talk',p:5,a:false},
+  {h:'14:00–14:43',t:'Método CEO Viasoft: retomar controle de atenção, tempo e energia',s:'Fábio Scaberni / Matheus Ismaael',l:'Oficina 3',f:'workshop',p:3,a:false},
+  {h:'14:00–14:43',t:'10 dias de Claude Code para iniciantes',s:'Rafael Ribeiro',l:'Oficina 2',f:'workshop',p:5,a:true},
+  {h:'14:05–14:25',t:'The AI Squad Factory',s:'Vinicius Galhiardi',l:'Arena de Negócios',f:'talk',p:4,a:false},
+  {h:'14:20–14:40',t:'Estamos em 2021, mas com IA: evitar perdas no uso',s:'Leonardo Zappa',l:'Palco Principal',f:'palestra',p:4,a:false},
+  {h:'14:40–15:00',t:'Painel IA na prática: startups que escalam vs morrem no piloto',s:'Jose Caodaglio + 2 convidados',l:'Palco Principal',f:'painel',p:4,a:true},
+  {h:'15:00–15:20',t:'Medindo o impacto da IA na ciência: adoção, capacidade e impacto',s:'Ana Trišović',l:'Palco Principal',f:'palestra',p:4,a:false},
+  {h:'15:00–15:43',t:'Criação de agentes de IA',s:'Rafael Martins',l:'Oficina 1',f:'workshop',p:5,a:true},
+  {h:'15:00–15:43',t:'Sua próxima squad não será 100% humana: times híbridos',s:'Tassiana Rugoni',l:'Oficina 3',f:'workshop',p:4,a:false},
+  {h:'15:00–15:43',t:'Como escalar a IA no ERP com segurança e continuidade',s:'Theron Morato',l:'Oficina 2',f:'workshop',p:4,a:false},
+  {h:'15:20–15:40',t:'Como é construir produtos de IA de fronteira dentro de um AGI lab',s:'Felipe Blanes',l:'Palco Principal',f:'palestra',p:3,a:false},
+  {h:'16:00–16:43',t:'Menos espera, mais receita: automação para clínicas, hotéis e educação',s:'Enio Moraes',l:'Oficina 2',f:'workshop',p:4,a:false},
+  {h:'16:00–16:43',t:'Puxe contexto de qualquer lugar para melhores decisões com Glean',s:'Leonardo Zappa',l:'Oficina 1',f:'workshop',p:4,a:false},
+  {h:'16:00–16:43',t:'Sua PME tem 4 problemas crônicos: agentes de IA resolvem em paralelo',s:'Pedro Lopes',l:'Oficina 3',f:'workshop',p:3,a:false},
+  {h:'16:10–16:30',t:'Do manual ao "companionship": quando IA ganha voz, contexto e marca',s:'Cristina Cestari',l:'Palco Principal',f:'palestra',p:4,a:false},
+  {h:'16:15–16:35',t:'Shadow AI',s:'Carlos Martins',l:'Arena de Negócios',f:'talk',p:3,a:false},
+  {h:'16:30–16:55',t:'IA sem ilusão: os desafios reais da implementação corporativa',s:'Carlos Octavio',l:'Palco Principal',f:'palestra',p:4,a:true},
+  {h:'16:55–17:20',t:'Humanos + Agentes: o novo modelo AI Powered redefinindo o futuro dos bancos',s:'Rafael Cavalcanti',l:'Palco Principal',f:'palestra',p:4,a:true},
+];
+
+function schedTypeLabel(f) {
+  return {workshop:'Workshop',palestra:'Palestra',talk:'Talk',painel:'Painel'}[f] || f;
+}
+function renderSchedule() {
+  [['13', SCHEDULE_D13], ['14', SCHEDULE_D14]].forEach(([day, data]) => {
+    const tbody = document.getElementById('sched-body-d' + day);
+    if (!tbody) return;
+    tbody.innerHTML = data.map(r =>
+      `<tr class="${r.a ? 'my-agenda' : ''}">
+        <td><span class="conf-time">${r.h}</span></td>
+        <td>${r.t}${r.a ? '<span class="agenda-badge">✅ Minha Agenda</span>' : ''}</td>
+        <td>${r.s}</td>
+        <td><span class="conf-local">${r.l}</span></td>
+        <td><span class="conf-format ${r.f}">${schedTypeLabel(r.f)}</span></td>
+        <td><span class="conf-priority">${'★'.repeat(r.p)}</span></td>
+      </tr>`
+    ).join('');
+  });
+}
+document.querySelectorAll('.conf-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.conf-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.conf-tab-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('conf-day-' + tab.dataset.day).classList.add('active');
+  });
+});
+
+const btnFilter = document.getElementById('btn-filter-agenda');
+btnFilter.addEventListener('click', () => {
+  const on = btnFilter.classList.toggle('active');
+  document.querySelectorAll('.conf-tab-panel').forEach(p => p.classList.toggle('filter-agenda-on', on));
+});
+renderSchedule();
 
 // service worker
 if ('serviceWorker' in navigator) {
